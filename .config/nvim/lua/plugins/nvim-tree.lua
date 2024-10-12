@@ -12,5 +12,7 @@ return {
             },
         })
         vim.keymap.set("n", "<C-n>", ":NvimTreeFindFileToggle<CR>")
+        vim.cmd[[hi NvimTreeNormal guibg=NONE ctermbg=NONE]]
+
     end,
 }

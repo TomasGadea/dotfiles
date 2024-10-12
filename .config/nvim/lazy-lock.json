@@ -1,4 +1,5 @@
 {
+  "LazyVim": { "branch": "main", "commit": "13a4a84e3485a36e64055365665a45dc82b6bf71" },
   "catppuccin": { "branch": "main", "commit": "7be452ee067978cdc8b2c5f3411f0c71ffa612b9" },
   "lazy.nvim": { "branch": "main", "commit": "1159bdccd8910a0fd0914b24d6c3d186689023d9" },
   "nvim-tree.lua": { "branch": "master", "commit": "4a9e82d10a3715d0c3845e1d2f66ddfb8b711253" },
