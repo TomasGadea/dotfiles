@@ -1,0 +1,39 @@
+# compiled python files
+*.pyc
+
+# folder view configuration files
+.DS_Store
+Desktop.ini
+
+# thumbnail cache files
+._*
+Thumbs.db
+
+# files that might appear on external disks
+.Spotlight-V100
+.Trashes
+
+# non essential
+extra*
+.extra*
+test*
+.test*
+
+# sensitive data
+.secret*
+
+# zsh
+.zprofile
+.zcompdump
+.zsh_sessions
+.zsh_history
+
+# bash
+.bash_profile
+
+# config
+jupyter
+htop
+docker
+colima
+swiftpm

@@ -1,0 +1,31 @@
+#!/bin/sh
+
+# sensible defaults
+alias clear="clear -x"
+
+# navigation
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+
+# git
+alias g="git"
+alias gst="git status"
+alias gd="git diff --color | sed 's/^\([^-+ ]*\)[-+ ]/\\1/' | less -r"
+alias ga="git add"
+alias gaa="git add -A"
+alias gc="git commit"
+alias gp="git push origin HEAD"
+alias gl="git pull"
+alias glog="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
+
+# tmux
+command -v tmux > /dev/null && alias t="tmux"
+
+
+# shortcuts for my logs
+alias daily="vim $(date +"%Y-%m-%d").md"
+alias daily-journal="mkdir -p '$CURRENT_JOURNAL_DIR' && vim $CURRENT_JOURNAL_DIR/$(date +"%Y-%m-%d").md"
+alias dj="daily-journal"
+alias meetings="cd '$MEETINGS_DIR'"
