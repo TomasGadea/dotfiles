@@ -1,8 +1,5 @@
 #!/bin/sh
 
-# sensible defaults
-alias clear="clear -x"
-
 # navigation
 alias ..="cd .."
 alias ...="cd ../.."
