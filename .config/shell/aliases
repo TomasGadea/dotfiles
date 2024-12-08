@@ -6,6 +6,7 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias l="ls -la"
+alias clear='printf "\033[H\033[2J"'
 
 # git
 alias g="git"
