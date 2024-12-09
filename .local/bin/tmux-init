@@ -1,13 +1,54 @@
-#!/bin/sh
+#!/bin/bash
 
-base_session="main"
+# Create a new session named "dribia", split panes and change directory in each
+tmux new-session -d -s dribia
+tmux rename-window inti
+tmux send-keys -t dribia "cd /home/tomas/repositories/dribia/inti-ml" Enter
+tmux send-keys -t dribia "cd /home/tomas/repositories/dribia/inti-ml" Enter
+tmux send-keys -t dribia "nvim ." Enter
+tmux split-window -v -t dribia
+tmux send-keys -t dribia "cd /home/tomas/repositories/dribia/inti-ml" Enter
+tmux send-keys -t dribia "poetry shell" Enter
 
-command -v tmux >/dev/null || exit 1
+tmux new-window -t dribia -n inti-dbt
+tmux send-keys -t dribia "cd /home/tomas/repositories/dribia/inti-dbt" Enter
+tmux send-keys -t dribia "nvim ." Enter
+tmux split-window -v -t dribia
+tmux send-keys -t dribia "cd /home/tomas/repositories/dribia/inti-dbt" Enter
+tmux send-keys -t dribia "poetry shell" Enter
 
-[ -z "$TMUX" ] || exit 0
 
-if tmux has-session -t "${base_session}" 2>/dev/null; then
-    tmux attach-session -t "${base_session}"
-else
-    tmux new-session -s "${base_session}"
-fi
+tmux new-window -t dribia -n hooke
+tmux send-keys -t dribia "cd /home/tomas/repositories/dribia/hooke" Enter
+tmux send-keys -t dribia "nvim ." Enter
+tmux split-window -v -t dribia
+tmux send-keys -t dribia "cd /home/tomas/repositories/dribia/hooke" Enter
+tmux send-keys -t dribia "poetry shell" Enter
+
+tmux new-window -t dribia -n hooke-ml
+tmux send-keys -t dribia "cd /home/tomas/repositories/dribia/hooke-ml" Enter
+tmux send-keys -t dribia "source /home/tomas/repositories/dribia/hooke-ml/.venv/bin/activate && tmux wait-for -S hooke-ml-env-ready" Enter
+tmux wait-for hooke-ml-env-ready
+tmux send-keys -t dribia "nvim ." Enter
+tmux split-window -v -t dribia
+tmux send-keys -t dribia "cd /home/tomas/repositories/dribia/hooke-ml" Enter
+tmux send-keys -t dribia "poetry shell" Enter
+
+tmux new-window -t dribia -n hooke-dbt
+tmux send-keys -t dribia "cd /home/tomas/repositories/dribia/hooke-dbt" Enter
+tmux send-keys -t dribia "nvim ." Enter
+tmux split-window -v -t dribia
+tmux send-keys -t dribia "cd /home/tomas/repositories/dribia/hooke-dbt" Enter
+tmux send-keys -t dribia "poetry shell" Enter
+
+tmux new-window -t dribia -n argos
+tmux send-keys -t dribia "cd /home/tomas/repositories/dribia/argos" Enter
+tmux send-keys -t dribia "nvim ." Enter
+tmux split-window -v -t dribia
+tmux send-keys -t dribia "cd /home/tomas/repositories/dribia/argos" Enter
+tmux send-keys -t dribia "poetry shell" Enter
+
+tmux new-window -t dribia -n argos-ec2
+
+tmux select-window -t dribia:1
+tmux attach -t dribia
