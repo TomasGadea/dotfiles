@@ -1,9 +1,12 @@
 [font]
 size = 10.0
-normal = { family = "JetBrainsMonoNL Nerd Font Mono", style = "Regular" }
+normal = { family = "0xProto Nerd Font Mono", style = "Regular" }
 
 # [window]
 # opacity = 0.8
+
+[env]
+term = "xterm-256color"
 
 [colors.primary]
 background = "#24273a"
