@@ -2,12 +2,10 @@
 
 shell=$(basename "$SHELL")
 profile_path=".config/shell/profile"
-rc_path=".config/shell/rc"
 
 case "$shell" in
     bash)
         ln -sf $profile_path .profile
-        ln -sf $rc_path .bashrc
         ;;
     zsh)
         ln -sf $profile_path .zprofile

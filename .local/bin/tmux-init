@@ -17,14 +17,6 @@ tmux split-window -v -t dribia
 tmux send-keys -t dribia "cd /home/tomas/repositories/dribia/inti-dbt" Enter
 tmux send-keys -t dribia "poetry shell" Enter
 
-
-tmux new-window -t dribia -n hooke
-tmux send-keys -t dribia "cd /home/tomas/repositories/dribia/hooke" Enter
-tmux send-keys -t dribia "nvim ." Enter
-tmux split-window -v -t dribia
-tmux send-keys -t dribia "cd /home/tomas/repositories/dribia/hooke" Enter
-tmux send-keys -t dribia "poetry shell" Enter
-
 tmux new-window -t dribia -n hooke-ml
 tmux send-keys -t dribia "cd /home/tomas/repositories/dribia/hooke-ml" Enter
 tmux send-keys -t dribia "source /home/tomas/repositories/dribia/hooke-ml/.venv/bin/activate && tmux wait-for -S hooke-ml-env-ready" Enter
@@ -34,21 +26,16 @@ tmux split-window -v -t dribia
 tmux send-keys -t dribia "cd /home/tomas/repositories/dribia/hooke-ml" Enter
 tmux send-keys -t dribia "poetry shell" Enter
 
-tmux new-window -t dribia -n hooke-dbt
-tmux send-keys -t dribia "cd /home/tomas/repositories/dribia/hooke-dbt" Enter
+tmux new-window -t dribia -n statler-ml
+tmux send-keys -t dribia "cd /home/tomas/repositories/dribia/statler-ml" Enter
 tmux send-keys -t dribia "nvim ." Enter
 tmux split-window -v -t dribia
-tmux send-keys -t dribia "cd /home/tomas/repositories/dribia/hooke-dbt" Enter
+tmux send-keys -t dribia "cd /home/tomas/repositories/dribia/statler-ml" Enter
 tmux send-keys -t dribia "poetry shell" Enter
 
-tmux new-window -t dribia -n argos
-tmux send-keys -t dribia "cd /home/tomas/repositories/dribia/argos" Enter
+tmux new-window -t dribia -n TODOs
+tmux send-keys -t dribia "cd /home/tomas/Documents/dribia/todos" Enter
 tmux send-keys -t dribia "nvim ." Enter
-tmux split-window -v -t dribia
-tmux send-keys -t dribia "cd /home/tomas/repositories/dribia/argos" Enter
-tmux send-keys -t dribia "poetry shell" Enter
-
-tmux new-window -t dribia -n argos-ec2
 
 tmux select-window -t dribia:1
 tmux attach -t dribia

@@ -1,0 +1,24 @@
+alias ll='ls -lah'
+alias la='ls -A'
+alias l='ls -CF'
+alias clear='printf "\033[H\033[2J"'
+alias g="git"
+alias gst="git status"
+alias gd="git diff --color | sed 's/^\([^-+ ]*\)[-+ ]/\\1/' | less -r"
+alias ga="git add"
+alias gaa="git add -A"
+alias gc="git commit"
+alias gp="git push origin HEAD"
+alias gl="git pull"
+alias glog="git log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
+alias vim="nvim"
+alias v="nvim"
+alias vv="nvim ."
+alias t="tmux"
+alias ti="tmux-init"
+alias tk="tmux kill-session"
+
+
+# DRIBIA
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+

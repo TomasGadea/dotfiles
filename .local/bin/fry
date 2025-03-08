@@ -1,0 +1,4 @@
+#!/bin/bash
+
+kill -9 `ps -aef | grep $1 | awk '{ print $2 }'`
+
