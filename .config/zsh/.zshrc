@@ -45,8 +45,10 @@ bindkey -v '^?' backward-delete-char
 # key binds
 bindkey '^R' history-incremental-search-backward
 #command -v tmux-sessionizer > /dev/null && bindkey -s '^F' "tmux-sessionizer^M"
-bindkey '^[[A' up-line-or-search                                                
-bindkey '^[[B' down-line-or-search
+# bindkey '^[[A' up-line-or-search
+# bindkey '^[[B' down-line-or-search
+bindkey '^[OA' history-substring-search-up
+bindkey '^[OB' history-substring-search-down
 
 # init tmux
 #command -v tmux-init > /dev/null && tmux-init
