@@ -18,3 +18,7 @@ vim.opt.guicursor = ""
 vim.opt.splitright = true
 vim.opt.cursorline = true
 vim.api.nvim_set_keymap("i", "jj", "<Esc>", { noremap = true , silent = true })
+vim.opt.foldmethod = "indent"
+vim.opt.foldtext = ""
+vim.opt.foldlevel = 99
+vim.opt.foldnestmax = 4
