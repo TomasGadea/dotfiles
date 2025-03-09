@@ -55,7 +55,8 @@ bindkey '^[[B' down-line-or-search
 # Created by `pipx` on 2024-11-08 21:14:37
 export PATH="$HOME/.npm-packages/bin:$PATH"
 
-ZSH_HIGHLIGHT_DIR="${ZDOTDIR:-$HOME/.config/zsh}/zsh-syntax-highlighting"
+ZSH_HIGHLIGHT_DIR="${ZDOTDIR:-$HOME/.config/zsh}/plugins/zsh-syntax-highlighting"
+echo $ZSH_HIGHLIGHT_DIR
 if [ -f "$ZSH_HIGHLIGHT_DIR/zsh-syntax-highlighting.zsh" ]; then
     source "$ZSH_HIGHLIGHT_DIR/zsh-syntax-highlighting.zsh"
 else
