@@ -55,15 +55,11 @@ bindkey '^[[B' down-line-or-search
 # Created by `pipx` on 2024-11-08 21:14:37
 export PATH="$HOME/.npm-packages/bin:$PATH"
 
-ZSH_HIGHLIGHT_DIR="${ZDOTDIR:-$HOME/.config/zsh}/plugins/zsh-syntax-highlighting"
-echo $ZSH_HIGHLIGHT_DIR
-if [ -f "$ZSH_HIGHLIGHT_DIR/zsh-syntax-highlighting.zsh" ]; then
-    source "$ZSH_HIGHLIGHT_DIR/zsh-syntax-highlighting.zsh"
-else
-    echo "zsh-syntax-highlighting is missing!"
-    echo "Run the following command to properly clone your dotfiles:"
-    echo "   git clone --recursive git@github.com:TomasGadea/dotfiles.git"
-fi
+ZSH_PLUGIN_DIR="${ZDOTDIR:-$HOME/.config/zsh}/plugins"
+ZSH_HIGHLIGHT_DIR="$ZSH_PLUGIN_DIR/zsh-syntax-highlighting"
+ZSH_HISTORY_SUBSTRING_SEARCH_DIR="$ZSH_PLUGIN_DIR/zsh-history-substring-search"
+[ -f "$ZSH_HIGHLIGHT_DIR/zsh-syntax-highlighting.zsh" ] && source "$ZSH_HIGHLIGHT_DIR/zsh-syntax-highlighting.zsh"
+[ -f "$ZSH_HISTORY_SUBSTRING_SEARCH_DIR/zsh-history-substring-search.zsh" ] && source "$ZSH_HISTORY_SUBSTRING_SEARCH_DIR/zsh-history-substring-search.zsh"
 
 
 # DRIBIA
