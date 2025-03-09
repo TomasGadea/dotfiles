@@ -4,9 +4,6 @@ shell=$(basename "$SHELL")
 profile_path=".config/shell/profile"
 
 case "$shell" in
-    bash)
-        ln -sf $profile_path .bash_profile
-        ;;
     zsh)
         ln -sf $profile_path .zprofile
         ;;

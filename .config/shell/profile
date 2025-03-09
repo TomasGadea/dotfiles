@@ -1,86 +1,45 @@
-#!/bin/sh
-
-# add `~/.local/bin` to $PATH
-if [ -d "$HOME/.local/bin" ]; then
-    case ":$PATH:" in
-        *":$HOME/.local/bin:"*) :;;
-        *) PATH="$HOME/.local/bin:$PATH";;
-    esac
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/bin" ] ; then
+    PATH="$HOME/bin:$PATH"
 fi
 
-# base directories
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/.local/bin" ] ; then
+    PATH="$HOME/.local/bin:$PATH"
+fi
+
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_STATE_HOME="$HOME/.local/state"
 export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_DESKTOP_DIR="$HOME/Desktop"
+export XDG_DOCUMENTS_DIR="$HOME/Documents"
+export XDG_DOWNLOAD_DIR="$HOME/Downloads"
 
-export XDG_DESKTOP_DIR="$HOME/desktop"
-export XDG_DOCUMENTS_DIR="$HOME/documents"
-export XDG_DOWNLOAD_DIR="$HOME/downloads"
-
-# personal logs
-export LOGS_DIR="$XDG_DOCUMENTS_DIR/logs"
-export JOURNAL_DIR="$LOGS_DIR/journal"
-export CURRENT_JOURNAL_DIR="$JOURNAL_DIR/$(date +'%Y')/$(date +'%B' | tr '[:upper:]' '[:lower:]')"
-export MEETINGS_DIR="$LOGS_DIR/meetings"
-
-# env variables
 export HISTFILE="$XDG_STATE_HOME/shell_history"
-
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 
-export TEXMFHOME="$XDG_DATA_HOME/texmf"
-export TEXMFVAR="$XDG_CACHE_HOME/texlive/texmf-var"
-export TEXMFCONFIG="$XDG_CONFIG_HOME/texlive/texmf-config"
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
 
-export PYENV_ROOT="$XDG_DATA_HOME/pyenv"
-[ -d $PYENV_ROOT/bin ] && PATH="$PYENV_ROOT/bin:$PATH"
-command -v pyenv > /dev/null && eval "$(pyenv init -)"
-
-export PYTHON_HISTORY="$XDG_STATE_HOME/python/history"
-export PYTHONPYCACHEPREFIX="$XDG_CACHE_HOME/python"
-export PYTHONUSERBASE="$XDG_DATA_HOME/python"
-
-export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME/jupyter"
-
-export IPYTHONDIR="$XDG_CONFIG_HOME/jupyter"
-
-export POETRY_CONFIG_DIR="$XDG_CONFIG_HOME/pypoetry"
-export POETRY_DATA_DIR="$XDG_DATA_HOME/pypoetry"
-export POETRY_CACHE_DIR="$XDG_CACHE_HOME/pypoetry"
-
-export GOPATH="$XDG_DATA_HOME/go"
-export GOMODCACHE="$XDG_CACHE_HOME/go/mod"
-
-export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
-export CARGO_HOME="$XDG_DATA_HOME/cargo"
-[ -d $CARGO_HOME/bin ] && PATH="$CARGO_HOME/bin:$PATH"
-
-export DOCKER_CONFIG="$XDG_CONFIG_HOME/docker"
-
-export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
-export NODE_REPL_HISTORY="$XDG_STATE_HOME/node_repl_history"
-
-export SQLITE_HISTORY="$XDG_STATE_HOME/sqlite_history"
-export PSQL_HISTORY="$XDG_STATE_HOME/psql_history"
-
-export R_LIBS_USER="$XDG_DATA_HOME/R/library"
-
-# defaults
 export EDITOR="vim"
 command -v nvim > /dev/null && export EDITOR="nvim"
 
-command -v tmux-init >/dev/null && tmux-init
+# Created by `pipx` on 2024-11-08 21:14:37
+export PATH="$HOME/.npm-packages/bin:$PATH"
 
 
-# switch to zsh
-default_shell="$(basename "$SHELL")"
-if [ $default_shell != "zsh" ]; then
-    if command -v zsh > /dev/null; then
-        echo "Default shell is $default_shell, switching to zsh."
-        exec zsh
-    else
-        echo "Default shell is $default_shell and zsh is not present."
-    fi
-fi
+# DRIBIA
+export REPOSITORIES_PATH=/home/tomas/repositories
+export DRIBIA_DRIVE_PATH=/home/tomas/drive
+export DRIBIA_DRIVETEAM_PATH=/home/tomas/drive_team
+export PROGRAMS_PATH=/home/tomas/programs
+export WORKON_HOME=/home/tomas/.virtualenvs
+export PROJECT_HOME=/home/tomas/repositories
+export PYTHONPATH=:/home/tomas/repositories/dribia/pydribia/pydribia:/home/tomas/repositories/dribia/sotweaks/sotweaks
+export PYTHONDONTWRITEBYTECODE=no
+
+. "$HOME/.local/share/../bin/env"
+export PATH="$PATH:/opt/mssql-tools18/bin"
 

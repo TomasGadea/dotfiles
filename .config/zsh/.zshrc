@@ -9,7 +9,7 @@ typeset -U path # declare $PATH as a unique array
 setopt autocd # auto cd into directory.
 setopt nomatch # output error if file doesn't match
 setopt interactive_comments # comments in interactive shells
-unsetopt PROMPT_SP # disable preservation of trailing spaces in prompt
+setopt PROMPT_SP # enable preservation of trailing spaces in prompt
 stty stop undef # disable ctrl-s to freeze terminal.
 zle_highlight=('paste:none') # don't highlight paste
 
@@ -45,8 +45,10 @@ bindkey -v '^?' backward-delete-char
 # key binds
 bindkey '^R' history-incremental-search-backward
 #command -v tmux-sessionizer > /dev/null && bindkey -s '^F' "tmux-sessionizer^M"
-bindkey '^[[A' up-line-or-search                                                
-bindkey '^[[B' down-line-or-search
+# bindkey '^[[A' up-line-or-search
+# bindkey '^[[B' down-line-or-search
+bindkey '^[OA' history-substring-search-up
+bindkey '^[OB' history-substring-search-down
 
 # init tmux
 #command -v tmux-init > /dev/null && tmux-init
@@ -55,4 +57,13 @@ bindkey '^[[B' down-line-or-search
 # Created by `pipx` on 2024-11-08 21:14:37
 export PATH="$HOME/.npm-packages/bin:$PATH"
 
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+ZSH_PLUGIN_DIR="${ZDOTDIR:-$HOME/.config/zsh}/plugins"
+ZSH_HIGHLIGHT_DIR="$ZSH_PLUGIN_DIR/zsh-syntax-highlighting"
+ZSH_HISTORY_SUBSTRING_SEARCH_DIR="$ZSH_PLUGIN_DIR/zsh-history-substring-search"
+[ -f "$ZSH_HIGHLIGHT_DIR/zsh-syntax-highlighting.zsh" ] && source "$ZSH_HIGHLIGHT_DIR/zsh-syntax-highlighting.zsh"
+[ -f "$ZSH_HISTORY_SUBSTRING_SEARCH_DIR/zsh-history-substring-search.zsh" ] && source "$ZSH_HISTORY_SUBSTRING_SEARCH_DIR/zsh-history-substring-search.zsh"
+
+
+# DRIBIA
+[ -f /home/tomas/repositories/dribia/sotweaks/sotweaks/bashrc_v2.sh ] && source /home/tomas/repositories/dribia/sotweaks/sotweaks/bashrc_v2.sh
+

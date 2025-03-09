@@ -30,3 +30,4 @@ RPROMPT=\$vcs_info_msg_0_
 # LS colors
 export CLICOLOR=1
 export LSCOLORS="exfxcxdxbxegedabagacad"
+
