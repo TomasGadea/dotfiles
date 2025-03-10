@@ -48,7 +48,9 @@ bindkey '^R' history-incremental-search-backward
 # bindkey '^[[A' up-line-or-search
 # bindkey '^[[B' down-line-or-search
 bindkey '^[OA' history-substring-search-up
+bindkey '^[[A' history-substring-search-up
 bindkey '^[OB' history-substring-search-down
+bindkey '^[[B' history-substring-search-down
 
 # init tmux
 #command -v tmux-init > /dev/null && tmux-init
