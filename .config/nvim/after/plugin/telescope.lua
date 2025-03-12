@@ -4,7 +4,7 @@ vim.keymap.set('n', '<leader>pf', function()
     builtin.find_files({
         hidden = true,
         no_ignore = true,
-        file_ignore_patterns = {".git/", ".venv/", "mypy_cache/", "ruff_cache/"}
+        file_ignore_patterns = {".git/", ".venv/", "mypy_cache/", "ruff_cache/", ".idea/"}
     })
 end, {})
 vim.keymap.set('n', '<C-p>', builtin.git_files, {})
