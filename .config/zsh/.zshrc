@@ -56,6 +56,10 @@ bindkey '^[[B' history-substring-search-down
 #command -v tmux-init > /dev/null && tmux-init
 
 
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
 # Created by `pipx` on 2024-11-08 21:14:37
 export PATH="$HOME/.npm-packages/bin:$PATH"
 
