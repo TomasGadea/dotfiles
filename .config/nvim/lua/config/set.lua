@@ -22,4 +22,7 @@ vim.opt.foldmethod = "indent"
 vim.opt.foldtext = ""
 vim.opt.foldlevel = 99
 vim.opt.foldnestmax = 4
-vim.opt_local.indentkeys:remove("<:>")
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "python",
+    command = "setlocal indentkeys-=<:>"
+})
