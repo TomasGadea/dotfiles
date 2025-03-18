@@ -53,3 +53,13 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end, opts)
   end,
 })
+
+vim.diagnostic.config({
+  virtual_text = true,  -- Show inline errors
+  signs = true,         -- Show signs in gutter
+  update_in_insert = false,
+  float = {
+    source = "always",  -- Show source of diagnostic
+  },
+})
+
