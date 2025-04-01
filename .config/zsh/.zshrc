@@ -70,3 +70,7 @@ ZSH_HISTORY_SUBSTRING_SEARCH_DIR="$ZSH_PLUGIN_DIR/zsh-history-substring-search"
 # DRIBIA
 [ -f /home/tomas/repositories/dribia/sotweaks/sotweaks/bashrc_v2.sh ] && source /home/tomas/repositories/dribia/sotweaks/sotweaks/bashrc_v2.sh
 
+
+export NVM_DIR="$HOME/.config/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
