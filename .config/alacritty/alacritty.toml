@@ -5,6 +5,10 @@ normal = { family = "0xProto Nerd Font Mono", style = "Regular" }
 # [window]
 # opacity = 0.8
 
+[terminal.shell]
+program = "/bin/zsh"
+args = ["--login"]
+
 [env]
 term = "xterm-256color"
 
