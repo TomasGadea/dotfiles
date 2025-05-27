@@ -22,21 +22,14 @@ tmux send-keys -t dribia "cd /home/tomas/repositories/dribia/tank-ml" Enter
 tmux send-keys -t dribia "nvim ." Enter
 tmux split-window -v -t dribia
 tmux send-keys -t dribia "cd /home/tomas/repositories/dribia/tank-ml" Enter
-tmux send-keys -t dribia "poetry shell" Enter
+tmux send-keys -t dribia "source .venv/bin/activate" Enter
 
-tmux new-window -t dribia -n tank-poc-ml
-tmux send-keys -t dribia "cd /home/tomas/repositories/dribia/tank-poc-ml" Enter
+tmux new-window -t dribia -n tank-alvin
+tmux send-keys -t dribia "cd /home/tomas/repositories/dribia/tank-alvin" Enter
 tmux send-keys -t dribia "nvim ." Enter
 tmux split-window -v -t dribia
-tmux send-keys -t dribia "cd /home/tomas/repositories/dribia/tank-poc-ml" Enter
-tmux send-keys -t dribia "poetry shell" Enter
+tmux send-keys -t dribia "cd /home/tomas/repositories/dribia/tank-alvin" Enter
 
-tmux new-window -t dribia -n tank-terraform
-tmux send-keys -t dribia "cd /home/tomas/repositories/dribia/tank-terraform" Enter
-tmux send-keys -t dribia "nvim ." Enter
-tmux split-window -v -t dribia
-tmux send-keys -t dribia "cd /home/tomas/repositories/dribia/tank-terraform" Enter
-tmux send-keys -t dribia "poetry shell" Enter
 
 tmux select-window -t dribia:1
 tmux attach -t dribia
