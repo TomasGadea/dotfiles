@@ -1,11 +1,17 @@
 local method = ":silent !"
 
 local python_formatters = { "ruff format", "ruff check --fix" }
+local lua_formatters = { "stylua --indent-type Spaces --indent-width 4 --sort-requires" }
 local shell_formatters = { "shfmt -w -i 4 -ci" }
+local tex_formatters = { "tex-fmt --tab 4" }
 
 local all_formatters = {
     python = python_formatters,
+    lua = lua_formatters,
     sh = shell_formatters,
+    tex = tex_formatters,
+    latex = tex_formatters,
+    bib = tex_formatters,
 }
 
 local function format_file()
