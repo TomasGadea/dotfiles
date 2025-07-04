@@ -37,3 +37,13 @@ htop
 docker
 colima
 swiftpm
+uv
+fish
+vim
+
+# other
+TODO.md
+
+# caches
+.local/share
+.local/state
