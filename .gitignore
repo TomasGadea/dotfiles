@@ -43,3 +43,7 @@ vim
 
 # other
 TODO.md
+
+# caches
+.local/share
+.local/state
