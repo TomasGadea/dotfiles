@@ -56,9 +56,9 @@ bindkey '^[[B' history-substring-search-down
 #command -v tmux-init > /dev/null && tmux-init
 
 
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+# export PYENV_ROOT="$HOME/.pyenv"
+# [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+# eval "$(pyenv init -)"
 
 ZSH_PLUGIN_DIR="${ZDOTDIR:-$HOME/.config/zsh}/plugins"
 ZSH_HIGHLIGHT_DIR="$ZSH_PLUGIN_DIR/zsh-syntax-highlighting"
