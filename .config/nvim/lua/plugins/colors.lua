@@ -1,0 +1,14 @@
+return {
+  {
+    "rose-pine/neovim",
+    name = "rose-pine",
+    lazy = false, -- load immediately
+    config = function()
+      require("rose-pine").setup({
+        --- optional default variant:
+        variant = "moon", -- "moon" (dark), "dawn" (light), or "rose" (default dark)
+      })
+      vim.cmd("colorscheme rose-pine")
+    end,
+  },
+}
