@@ -4,3 +4,6 @@
 [submodule ".config/zsh/plugins/zsh-history-substring-search"]
 	path = .config/zsh/plugins/zsh-history-substring-search
 	url = git@github.com:TomasGadea/zsh-history-substring-search.git
+[submodule ".config/tmux/plugins/catppuccin/tmux"]
+	path = .config/tmux/plugins/catppuccin/tmux
+	url = https://github.com/catppuccin/tmux.git
