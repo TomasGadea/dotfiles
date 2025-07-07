@@ -20,3 +20,7 @@ gsh() {
   local n=${1:-0}
   git show HEAD~$n
 }
+
+daily() {
+    vim $(date +"%Y-%m-%d").md
+}

@@ -16,6 +16,13 @@ export XDG_DESKTOP_DIR="$HOME/Desktop"
 export XDG_DOCUMENTS_DIR="$HOME/Documents"
 export XDG_DOWNLOAD_DIR="$HOME/Downloads"
 
+# personal logs
+export LOGS_DIR="$XDG_DOCUMENTS_DIR/logs"
+export JOURNAL_DIR="$LOGS_DIR/journal"
+export CURRENT_JOURNAL_DIR="$JOURNAL_DIR/$(date +'%Y')/$(date +'%B' | tr '[:upper:]' '[:lower:]')"
+export MEETINGS_DIR="$LOGS_DIR/meetings"
+
+
 export HISTFILE="$XDG_STATE_HOME/shell_history"
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 
