@@ -38,6 +38,7 @@ docker
 colima
 swiftpm
 uv
+uvx
 fish
 vim
 
