@@ -1,9 +1,10 @@
 return {
   "neovim/nvim-lspconfig",
+  event = { "BufReadPre", "BufNewFile" },
   config = function()
     local lspconfig = require("lspconfig")
 
-    -- Setup language servers
+    -- Setup servers
     lspconfig.pyright.setup({})
     lspconfig.ts_ls.setup({})
     lspconfig.rust_analyzer.setup({
@@ -18,17 +19,18 @@ return {
       },
     })
 
-    -- Global diagnostic keymaps
+    -- Global diagnostics mappings
     vim.keymap.set("n", "<space>e", vim.diagnostic.open_float)
     vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
     vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
     vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist)
 
-    -- Use LspAttach to set buffer-local keymaps after server attaches
+    -- On attach mappings
     vim.api.nvim_create_autocmd("LspAttach", {
       group = vim.api.nvim_create_augroup("UserLspConfig", {}),
       callback = function(ev)
         vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
+
         local opts = { buffer = ev.buf }
         vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
         vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
@@ -50,7 +52,6 @@ return {
       end,
     })
 
-    -- Diagnostic config
     vim.diagnostic.config({
       virtual_text = true,
       signs = true,
@@ -61,4 +62,3 @@ return {
     })
   end,
 }
-
