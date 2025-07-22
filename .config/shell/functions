@@ -1,8 +1,8 @@
 pwdc() {
     if [ $# -eq 0 ]; then
-        builtin pwd | xclip -selection clipboard
+        builtin pwd | pbcopy
     else
-        realpath "$@" | xclip -selection clipboard
+        realpath "$@" | pbcopy
     fi
 }
 vpn() {
