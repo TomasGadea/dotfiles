@@ -22,5 +22,15 @@ gsh() {
 }
 
 daily() {
-    vim $(date +"%Y-%m-%d").md
+    file="$(date +'%Y-%m-%d').md"
+    if [ ! -f "$file" ]; then
+        {
+            echo "# $(date +'%Y-%m-%d')"
+            echo
+            echo "## done"
+            echo "## doing"
+            echo "## todo"
+        } > "$file"
+    fi
+    vim "$file"
 }
