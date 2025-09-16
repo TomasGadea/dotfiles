@@ -1,27 +1,44 @@
 #!/bin/bash
 
-# Create a new session named "algrano", split panes and change directory in each
-tmux new-session -d -s algrano
-tmux rename-window dagster
-tmux send-keys -t algrano "cd /Users/tomas/repositories/algrano/data/warehouse/algrano-data-warehouse-dagster" Enter
-tmux send-keys -t algrano "nvim ." Enter
-tmux split-window -v -t algrano
-tmux send-keys -t algrano "cd /Users/tomas/repositories/algrano/data/warehouse/algrano-data-warehouse-dagster" Enter
-tmux send-keys -t algrano "source .venv/bin/activate" Enter
+ARG=${1:-algrano}
 
-tmux new-window -t algrano -n dlt
-tmux send-keys -t algrano "cd /Users/tomas/repositories/algrano/data/warehouse/algrano-data-warehouse-dlt" Enter
-tmux send-keys -t algrano "nvim ." Enter
-tmux split-window -v -t algrano
-tmux send-keys -t algrano "cd /Users/tomas/repositories/algrano/data/warehouse/algrano-data-warehouse-dlt" Enter
-tmux send-keys -t algrano "source .venv/bin/activate" Enter
+if [ "$ARG" == "algrano" ]; then
+    tmux new-session -d -s algrano
+    tmux rename-window dagster
+    tmux send-keys -t algrano "cd /Users/tomas/repositories/algrano/data/warehouse/algrano-data-warehouse-dagster" Enter
+    tmux send-keys -t algrano "nvim ." Enter
+    tmux split-window -v -t algrano
+    tmux send-keys -t algrano "cd /Users/tomas/repositories/algrano/data/warehouse/algrano-data-warehouse-dagster" Enter
+    tmux send-keys -t algrano "source .venv/bin/activate" Enter
 
-tmux new-window -t algrano -n dbt
-tmux send-keys -t algrano "cd /Users/tomas/repositories/algrano/data/warehouse/algrano-data-warehouse-dbt" Enter
-tmux send-keys -t algrano "nvim ." Enter
-tmux split-window -v -t algrano
-tmux send-keys -t algrano "cd /Users/tomas/repositories/algrano/data/warehouse/algrano-data-warehouse-dbt" Enter
-tmux send-keys -t algrano "source .venv/bin/activate" Enter
+    tmux new-window -t algrano -n dlt
+    tmux send-keys -t algrano "cd /Users/tomas/repositories/algrano/data/warehouse/algrano-data-warehouse-dlt" Enter
+    tmux send-keys -t algrano "nvim ." Enter
+    tmux split-window -v -t algrano
+    tmux send-keys -t algrano "cd /Users/tomas/repositories/algrano/data/warehouse/algrano-data-warehouse-dlt" Enter
+    tmux send-keys -t algrano "source .venv/bin/activate" Enter
 
-tmux select-window -t algrano:1
-tmux attach -t algrano
+    tmux new-window -t algrano -n dbt
+    tmux send-keys -t algrano "cd /Users/tomas/repositories/algrano/data/warehouse/algrano-data-warehouse-dbt" Enter
+    tmux send-keys -t algrano "nvim ." Enter
+    tmux split-window -v -t algrano
+    tmux send-keys -t algrano "cd /Users/tomas/repositories/algrano/data/warehouse/algrano-data-warehouse-dbt" Enter
+    tmux send-keys -t algrano "source .venv/bin/activate" Enter
+
+    tmux select-window -t algrano:1
+    tmux attach -t algrano
+
+elif [ "$ARG" == "master" ]; then
+    tmux new-session -d -s master
+    tmux send-keys -t master "master" Enter
+
+    tmux new-window -t master -n dj
+    tmux send-keys -t master:dj "dj" Enter
+
+    tmux select-window -t master:1
+    tmux attach -t master
+
+else
+    echo "tmux-init for '$ARG' not defined"
+    exit 1
+fi
