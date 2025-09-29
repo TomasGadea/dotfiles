@@ -25,6 +25,9 @@ if [ "$ARG" == "algrano" ]; then
     tmux send-keys -t algrano "cd /Users/tomas/repositories/algrano/data/warehouse/algrano-data-warehouse-dbt" Enter
     tmux send-keys -t algrano "source .venv/bin/activate" Enter
 
+    tmux new-window -t algrano -n dj
+    tmux send-keys -t algrano:dj "dj" Enter
+
     tmux select-window -t algrano:1
     tmux attach -t algrano
 
