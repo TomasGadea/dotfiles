@@ -32,13 +32,13 @@ if [ "$ARG" == "algrano" ]; then
     tmux attach -t algrano
 
 elif [ "$ARG" == "master" ]; then
-    tmux new-session -d -s master
-    tmux send-keys -t master "master" Enter
-
-    tmux new-window -t master -n dj
+    tmux new-session -d -s master -n dj
     tmux send-keys -t master:dj "dj" Enter
 
-    tmux select-window -t master:1
+    tmux new-window -t master
+    tmux send-keys -t master "master" Enter
+
+    tmux select-window -t master:2
     tmux attach -t master
 
 else
