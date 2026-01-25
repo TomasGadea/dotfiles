@@ -19,7 +19,7 @@ export XDG_DOWNLOAD_DIR="$HOME/Downloads"
 # personal logs
 export LOGS_DIR="$XDG_DOCUMENTS_DIR/logs"
 export JOURNAL_DIR="$LOGS_DIR/journal"
-export CURRENT_JOURNAL_DIR="$JOURNAL_DIR/$(date +'%Y')/$(date +'%B' | tr '[:upper:]' '[:lower:]')"
+export CURRENT_JOURNAL_DIR="$JOURNAL_DIR/$(date +'%Y')/$(date +'%m_%B' | tr '[:upper:]' '[:lower:]')"
 export MEETINGS_DIR="$LOGS_DIR/meetings"
 
 
