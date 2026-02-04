@@ -34,6 +34,7 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 # personal logs
 alias daily-journal="mkdir -p '${CURRENT_JOURNAL_DIR}' && cd ${CURRENT_JOURNAL_DIR} && daily"
 alias dj="daily-journal"
+alias oc="opencode"
 alias meetings="cd '${MEETINGS_DIR}'"
 
 alias master="cd '${XDG_DOCUMENTS_DIR}/master'"
