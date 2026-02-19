@@ -40,6 +40,32 @@ elif [ "$ARG" == "master" ]; then
     tmux select-window -t master:2
     tmux attach -t master
 
+elif [ "$ARG" == "lts4" ]; then
+    tmux new-session -d -s lts4 -n dj
+    tmux send-keys -t lts4:dj "dj" Enter
+
+    tmux new-window -t lts4 -n notes
+    tmux send-keys -t lts4:notes "cd /Users/tomas/Documents/master/epfl/lts4/notes" Enter
+    tmux send-keys -t lts4:notes "nvim ." Enter
+    tmux split-window -v -t lts4:notes
+    tmux send-keys -t lts4:notes "cd /Users/tomas/Documents/master/epfl/lts4/notes" Enter
+
+    tmux new-window -t lts4 -n papers
+    tmux send-keys -t lts4:papers "cd /Users/tomas/Documents/master/epfl/lts4/papers" Enter
+    tmux send-keys -t lts4:papers "nvim ." Enter
+    tmux split-window -v -t lts4:papers
+    tmux send-keys -t lts4:papers "cd /Users/tomas/Documents/master/epfl/lts4/papers" Enter
+
+    tmux new-window -t lts4 -n graphist-code
+    tmux send-keys -t lts4:graphist-code "cd /Users/tomas/Documents/master/epfl/lts4/code/MahbodTomas-2026-ExtendingGraphist-sem" Enter
+    tmux send-keys -t lts4:graphist-code "nvim ." Enter
+    tmux split-window -v -t lts4:graphist-code
+    tmux send-keys -t lts4:graphist-code "cd /Users/tomas/Documents/master/epfl/lts4/code/MahbodTomas-2026-ExtendingGraphist-sem" Enter
+    tmux send-keys -t lts4:graphist-code "conda activate graphist" Enter
+
+    tmux select-window -t lts4:1
+    tmux attach -t lts4
+
 else
     echo "tmux-init for '$ARG' not defined"
     exit 1
