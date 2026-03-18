@@ -18,7 +18,7 @@ vpn() {
 
 gsh() {
   local n=${1:-0}
-  git show HEAD~$n
+  git show HEAD~$n --name-only
 }
 
 daily() {
