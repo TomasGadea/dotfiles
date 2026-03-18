@@ -2,22 +2,12 @@ return {
   "neovim/nvim-lspconfig",
   event = { "BufReadPre", "BufNewFile" },
   config = function()
-    local lspconfig = require("lspconfig")
+    -- Setup servers using the new vim.lsp.config API
+    vim.lsp.config("pyright", {})
+    vim.lsp.config("ts_ls", {})
+    vim.lsp.config("rust_analyzer", {})
 
-    -- Setup servers
-    lspconfig.pyright.setup({})
-    lspconfig.ts_ls.setup({})
-    lspconfig.rust_analyzer.setup({
-      settings = {
-        python = {
-          analysis = {
-            autoSearchPaths = true,
-            diagnosticMode = "openFilesOnly",
-            useLibraryCodeForTypes = true,
-          },
-        },
-      },
-    })
+    vim.lsp.enable({ "pyright", "ts_ls", "rust_analyzer" })
 
     -- Global diagnostics mappings
     vim.keymap.set("n", "<space>e", vim.diagnostic.open_float)
