@@ -34,3 +34,73 @@ daily() {
     fi
     vim "$file"
 }
+
+changetheme() {
+    local alacritty_config="$HOME/.config/alacritty/alacritty.toml"
+    local alacritty_themes="$HOME/.config/alacritty/themes"
+    local theme_file="$HOME/.local/state/theme"
+
+    local alacritty_theme tmux_flavor desc
+    case "$1" in
+        latte)     alacritty_theme="latte";           tmux_flavor="latte";     desc="Catppuccin Latte (light)" ;;
+        frappe)    alacritty_theme="frappe";           tmux_flavor="frappe";    desc="Catppuccin Frappe (medium dark)" ;;
+        macchiato) alacritty_theme="macchiato";        tmux_flavor="macchiato"; desc="Catppuccin Macchiato (dark)" ;;
+        mocha)     alacritty_theme="mocha";            tmux_flavor="mocha";     desc="Catppuccin Mocha (darkest)" ;;
+        solarized) alacritty_theme="solarized_light";  tmux_flavor="solarized_light";   desc="Solarized Light" ;;
+        rosepine)  alacritty_theme="rose_pine_dawn";   tmux_flavor="rose_pine_dawn";    desc="Rose Pine Dawn (light)" ;;
+        gruvbox)   alacritty_theme="gruvbox_light";    tmux_flavor="gruvbox_light";     desc="Gruvbox Light" ;;
+        *)
+            echo "Usage: changetheme <theme>"
+            echo
+            echo "Available themes:"
+            echo "  Light:"
+            echo "    latte     - Catppuccin Latte"
+            echo "    solarized - Solarized Light"
+            echo "    rosepine  - Rose Pine Dawn"
+            echo "    gruvbox   - Gruvbox Light"
+            echo "  Dark:"
+            echo "    frappe    - Catppuccin Frappe (medium dark)"
+            echo "    macchiato - Catppuccin Macchiato (dark)"
+            echo "    mocha     - Catppuccin Mocha (darkest)"
+            return 1
+            ;;
+    esac
+
+    if [[ ! -f "$alacritty_themes/$alacritty_theme.toml" ]]; then
+        echo "Error: theme file not found: $alacritty_themes/$alacritty_theme.toml"
+        return 1
+    fi
+
+    # persist theme choice (used by neovim on startup)
+    echo "$1" > "$theme_file"
+    # persist tmux flavor (used by tmux on startup)
+    echo "$tmux_flavor" > "$HOME/.local/state/tmux_flavor"
+
+    # update alacritty (live-reloads automatically)
+    sed -i '' 's|^import = .*|import = ["~/.config/alacritty/themes/'"$alacritty_theme"'.toml"]|' "$alacritty_config"
+
+    # update tmux
+    if [ -n "$TMUX" ]; then
+        tmux set -g @catppuccin_flavor "$tmux_flavor"
+        # clear stale @thm_* colors (theme files use set -o which skips if already set)
+        for opt in $(tmux show -g 2>/dev/null | grep "^@thm_" | cut -d" " -f1); do
+            tmux set -gu "$opt"
+        done
+        # symlink custom theme into plugin dir if needed
+        local custom="$HOME/.config/tmux/themes/catppuccin_${tmux_flavor}_tmux.conf"
+        local target="$HOME/.config/tmux/plugins/catppuccin/tmux/themes/catppuccin_${tmux_flavor}_tmux.conf"
+        [ -f "$custom" ] && [ ! -e "$target" ] && ln -s "$custom" "$target"
+        tmux run "$HOME/.config/tmux/plugins/catppuccin/tmux/catppuccin.tmux"
+    fi
+
+    # update all running neovim instances
+    local nvim_sockets
+    nvim_sockets=$(find "${TMPDIR:-/tmp}" -name "nvim.*.0" -type s 2>/dev/null)
+    if [ -n "$nvim_sockets" ]; then
+        echo "$nvim_sockets" | while read -r sock; do
+            nvim --server "$sock" --remote-send "<Cmd>ChangeTheme<CR>" 2>/dev/null
+        done
+    fi
+
+    echo "Applied theme: $desc"
+}
