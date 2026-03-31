@@ -30,6 +30,7 @@ autoload -U compinit
 compinit -d "$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION"
 zstyle ':completion:*' cache-path "$XDG_CACHE_HOME/zsh/zcompcache"
 zstyle ':completion:*' menu select
+zstyle ':completion:*' special-dirs true
 zmodload zsh/complist
 _comp_options+=(globdots) # include hidden files
 
