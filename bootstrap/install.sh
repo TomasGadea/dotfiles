@@ -17,14 +17,15 @@ if ! command -v stow >/dev/null; then
 fi
 
 if [ "$1" = "--skip-conflicts" ]; then
-	# Stow aborts on any conflict (absolute symlinks, existing files, etc).
-	# Strategy: keep retrying stow, moving conflicting targets aside each
-	# time, then restore them after stow succeeds.
+	# Move conflicting targets aside, stow, then restore them.
+	# This handles absolute symlinks and existing files that stow refuses
+	# to overwrite.
 	tmpdir=$(mktemp -d)
+	conflicts=""
 	max_attempts=20
 	attempt=0
 	while true; do
-		output=$(stow . 2>&1) && break # success, done
+		output=$(stow . 2>&1) && break
 		attempt=$((attempt + 1))
 		if [ "$attempt" -ge "$max_attempts" ]; then
 			echo "stow failed after $max_attempts attempts:"
@@ -32,38 +33,35 @@ if [ "$1" = "--skip-conflicts" ]; then
 			rm -rf "$tmpdir"
 			exit 1
 		fi
-		# Extract conflicting file paths from stow's error output.
-		# Stow errors look like:
-		#   * existing target is an absolute symlink: .local/bin/poetry
-		#   * existing target is neither a link nor a directory: .config/foo
-		conflicts=$(echo "$output" | sed -n 's/.*existing target is [^:]*: *//p')
-		if [ -z "$conflicts" ]; then
+		batch=$(echo "$output" | sed -n 's/.*existing target is [^:]*: *//p')
+		if [ -z "$batch" ]; then
 			echo "stow failed with unexpected error:"
 			echo "$output"
 			rm -rf "$tmpdir"
 			exit 1
 		fi
-		echo "$conflicts" | while read -r f; do
+		# Save to file to avoid subshell variable loss from pipes
+		echo "$batch" >"$tmpdir/_batch"
+		while read -r f; do
 			if [ -e "$HOME/$f" ] || [ -L "$HOME/$f" ]; then
 				mkdir -p "$tmpdir/$(dirname "$f")"
 				mv "$HOME/$f" "$tmpdir/$f"
+				conflicts="$conflicts$f
+"
 				echo "  moved aside: $f"
 			fi
-		done
+		done <"$tmpdir/_batch"
+		rm -f "$tmpdir/_batch"
 	done
-	# Restore the original files over the symlinks stow created
-	if [ -d "$tmpdir" ]; then
-		cd "$tmpdir"
-		find . \( -type f -o -type l \) | while read -r f; do
-			f="${f#./}"
-			rm -f "$HOME/$f"
-			mkdir -p "$HOME/$(dirname "$f")"
-			mv "$f" "$HOME/$f"
-			echo "  restored: $f"
-		done
-		cd "$HOME/dotfiles"
-		rm -rf "$tmpdir"
-	fi
+	# Restore original files over symlinks stow created
+	echo "$conflicts" | while read -r f; do
+		[ -z "$f" ] && continue
+		rm -f "$HOME/$f"
+		mkdir -p "$HOME/$(dirname "$f")"
+		mv "$tmpdir/$f" "$HOME/$f"
+		echo "  restored: $f"
+	done
+	rm -rf "$tmpdir"
 	echo "stow complete (conflicts were skipped)"
 else
 	stow .

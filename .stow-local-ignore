@@ -27,3 +27,7 @@ _darcs
 ^/COPYING
 ^/bootstrap/*
 \.DS_Store
+
+# Machine-specific binaries (may conflict with locally-installed versions)
+^/\.local/bin/poetry
+^/\.local/bin/claude
