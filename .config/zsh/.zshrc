@@ -69,7 +69,7 @@ ZSH_HISTORY_SUBSTRING_SEARCH_DIR="$ZSH_PLUGIN_DIR/zsh-history-substring-search"
 
 
 # DRIBIA
-[ -f /home/tomas/repositories/dribia/sotweaks/sotweaks/bashrc_v2.sh ] && source /home/tomas/repositories/dribia/sotweaks/sotweaks/bashrc_v2.sh
+[ -f /home/fleetlineopenclaw/repositories/dribia/sotweaks/sotweaks/bashrc_v2.sh ] && source /home/fleetlineopenclaw/repositories/dribia/sotweaks/sotweaks/bashrc_v2.sh
 
 
 export NVM_DIR="$HOME/.config/nvm"
@@ -93,4 +93,4 @@ unset __conda_setup
 
 
 # opencode
-export PATH=/Users/tomas/.opencode/bin:$PATH
+export PATH=/Users/fleetlineopenclaw/.opencode/bin:$PATH

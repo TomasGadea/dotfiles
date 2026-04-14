@@ -7,24 +7,24 @@ if [ "$ARG" == "algrano" ]; then
     tmux send-keys -t algrano:dj "dj" Enter
 
     tmux new-window -t algrano -n dagster
-    tmux send-keys -t algrano "cd /Users/tomas/repositories/algrano/data/warehouse/algrano-data-warehouse-dagster" Enter
+    tmux send-keys -t algrano "cd /Users/fleetlineopenclaw/repositories/algrano/data/warehouse/algrano-data-warehouse-dagster" Enter
     tmux send-keys -t algrano "nvim ." Enter
     tmux split-window -v -t algrano
-    tmux send-keys -t algrano "cd /Users/tomas/repositories/algrano/data/warehouse/algrano-data-warehouse-dagster" Enter
+    tmux send-keys -t algrano "cd /Users/fleetlineopenclaw/repositories/algrano/data/warehouse/algrano-data-warehouse-dagster" Enter
     tmux send-keys -t algrano "source .venv/bin/activate" Enter
 
     tmux new-window -t algrano -n dlt
-    tmux send-keys -t algrano "cd /Users/tomas/repositories/algrano/data/warehouse/algrano-data-warehouse-dlt" Enter
+    tmux send-keys -t algrano "cd /Users/fleetlineopenclaw/repositories/algrano/data/warehouse/algrano-data-warehouse-dlt" Enter
     tmux send-keys -t algrano "nvim ." Enter
     tmux split-window -v -t algrano
-    tmux send-keys -t algrano "cd /Users/tomas/repositories/algrano/data/warehouse/algrano-data-warehouse-dlt" Enter
+    tmux send-keys -t algrano "cd /Users/fleetlineopenclaw/repositories/algrano/data/warehouse/algrano-data-warehouse-dlt" Enter
     tmux send-keys -t algrano "source .venv/bin/activate" Enter
 
     tmux new-window -t algrano -n dbt
-    tmux send-keys -t algrano "cd /Users/tomas/repositories/algrano/data/warehouse/algrano-data-warehouse-dbt" Enter
+    tmux send-keys -t algrano "cd /Users/fleetlineopenclaw/repositories/algrano/data/warehouse/algrano-data-warehouse-dbt" Enter
     tmux send-keys -t algrano "nvim ." Enter
     tmux split-window -v -t algrano
-    tmux send-keys -t algrano "cd /Users/tomas/repositories/algrano/data/warehouse/algrano-data-warehouse-dbt" Enter
+    tmux send-keys -t algrano "cd /Users/fleetlineopenclaw/repositories/algrano/data/warehouse/algrano-data-warehouse-dbt" Enter
     tmux send-keys -t algrano "source .venv/bin/activate" Enter
 
     tmux select-window -t algrano:1
@@ -45,22 +45,22 @@ elif [ "$ARG" == "lts4" ]; then
     tmux send-keys -t lts4:dj "dj" Enter
 
     tmux new-window -t lts4 -n notes
-    tmux send-keys -t lts4:notes "cd /Users/tomas/Documents/master/epfl/lts4/notes" Enter
+    tmux send-keys -t lts4:notes "cd /Users/fleetlineopenclaw/Documents/master/epfl/lts4/notes" Enter
     tmux send-keys -t lts4:notes "nvim ." Enter
     tmux split-window -v -t lts4:notes
-    tmux send-keys -t lts4:notes "cd /Users/tomas/Documents/master/epfl/lts4/notes" Enter
+    tmux send-keys -t lts4:notes "cd /Users/fleetlineopenclaw/Documents/master/epfl/lts4/notes" Enter
 
     tmux new-window -t lts4 -n papers
-    tmux send-keys -t lts4:papers "cd /Users/tomas/Documents/master/epfl/lts4/papers" Enter
+    tmux send-keys -t lts4:papers "cd /Users/fleetlineopenclaw/Documents/master/epfl/lts4/papers" Enter
     tmux send-keys -t lts4:papers "nvim ." Enter
     tmux split-window -v -t lts4:papers
-    tmux send-keys -t lts4:papers "cd /Users/tomas/Documents/master/epfl/lts4/papers" Enter
+    tmux send-keys -t lts4:papers "cd /Users/fleetlineopenclaw/Documents/master/epfl/lts4/papers" Enter
 
     tmux new-window -t lts4 -n graphist-code
-    tmux send-keys -t lts4:graphist-code "cd /Users/tomas/Documents/master/epfl/lts4/code/MahbodTomas-2026-ExtendingGraphist-sem" Enter
+    tmux send-keys -t lts4:graphist-code "cd /Users/fleetlineopenclaw/Documents/master/epfl/lts4/code/MahbodTomas-2026-ExtendingGraphist-sem" Enter
     tmux send-keys -t lts4:graphist-code "nvim ." Enter
     tmux split-window -v -t lts4:graphist-code
-    tmux send-keys -t lts4:graphist-code "cd /Users/tomas/Documents/master/epfl/lts4/code/MahbodTomas-2026-ExtendingGraphist-sem" Enter
+    tmux send-keys -t lts4:graphist-code "cd /Users/fleetlineopenclaw/Documents/master/epfl/lts4/code/MahbodTomas-2026-ExtendingGraphist-sem" Enter
     tmux send-keys -t lts4:graphist-code "conda activate graphist" Enter
 
     tmux select-window -t lts4:1

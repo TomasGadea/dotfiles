@@ -34,13 +34,13 @@ export PATH="$HOME/.npm-packages/bin:$PATH"
 
 
 # DRIBIA
-export REPOSITORIES_PATH=/home/tomas/repositories
-export DRIBIA_DRIVE_PATH=/home/tomas/drive
-export DRIBIA_DRIVETEAM_PATH=/home/tomas/drive_team
-export PROGRAMS_PATH=/home/tomas/programs
-export WORKON_HOME=/home/tomas/.virtualenvs
-export PROJECT_HOME=/home/tomas/repositories
-export PYTHONPATH=:/home/tomas/repositories/dribia/pydribia/pydribia:/home/tomas/repositories/dribia/sotweaks/sotweaks
+export REPOSITORIES_PATH=/home/fleetlineopenclaw/repositories
+export DRIBIA_DRIVE_PATH=/home/fleetlineopenclaw/drive
+export DRIBIA_DRIVETEAM_PATH=/home/fleetlineopenclaw/drive_team
+export PROGRAMS_PATH=/home/fleetlineopenclaw/programs
+export WORKON_HOME=/home/fleetlineopenclaw/.virtualenvs
+export PROJECT_HOME=/home/fleetlineopenclaw/repositories
+export PYTHONPATH=:/home/fleetlineopenclaw/repositories/dribia/pydribia/pydribia:/home/fleetlineopenclaw/repositories/dribia/sotweaks/sotweaks
 export PYTHONDONTWRITEBYTECODE=no
 
 . "$HOME/.local/share/../bin/env"
