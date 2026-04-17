@@ -1,5 +1,5 @@
 [general]
-import = ["~/.config/alacritty/themes/solarized_light.toml"]
+import = ["~/.config/alacritty/themes/mocha.toml"]
 
 [font]
 size = 10.0
