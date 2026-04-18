@@ -31,14 +31,11 @@ elif [ "$ARG" == "master" ]; then
     tmux new-session -d -s master
     tmux send-keys -t master "master" Enter
 
-    tmux select-window -t master:2
+    tmux select-window -t master:1
     tmux attach -t master
 
 elif [ "$ARG" == "lts4" ]; then
-    tmux new-session -d -s lts4 -n dj
-    tmux send-keys -t lts4:dj "dj" Enter
-
-    tmux new-window -t lts4 -n notes
+    tmux new-session -d -s lts4 -n notes
     tmux send-keys -t lts4:notes "cd /Users/tomas/Documents/master/epfl/lts4/notes" Enter
     tmux send-keys -t lts4:notes "nvim ." Enter
     tmux split-window -v -t lts4:notes
@@ -59,6 +56,12 @@ elif [ "$ARG" == "lts4" ]; then
 
     tmux select-window -t lts4:1
     tmux attach -t lts4
+
+elif [ "$ARG" == "dj" ]; then
+    tmux new-session -d -s dj -n dj
+    tmux send-keys -t dj:dj "dj" Enter
+
+    tmux attach -t dj
 
 else
     echo "tmux-init for '$ARG' not defined"
