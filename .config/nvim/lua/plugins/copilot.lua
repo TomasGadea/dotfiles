@@ -1,6 +1,18 @@
 return {
-  'github/copilot.vim',
-  lazy = false, -- load on startup (or remove this line to lazy-load)
-  event = "InsertEnter", -- optionally lazy-load on insert mode
+  'zbirenbaum/copilot.lua',
+  cmd = 'Copilot',
+  event = 'InsertEnter',
+  opts = {
+    suggestion = {
+      enabled = true,
+      auto_trigger = true,
+      keymap = {
+        accept = '<Tab>',
+        dismiss = '<C-]>',
+        next = '<M-]>',
+        prev = '<M-[>',
+      },
+    },
+    copilot_node_command = 'node',
+  },
 }
-
