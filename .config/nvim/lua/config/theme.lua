@@ -17,7 +17,7 @@ local theme_map = {
 }
 
 -- Default if no theme file exists
-local default_theme = "rosepine"
+local default_theme = "mocha"
 
 function M.load()
   local theme_name = default_theme
