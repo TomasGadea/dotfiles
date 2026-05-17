@@ -61,9 +61,12 @@ bindkey '^[[B' history-substring-search-down
 # [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 # eval "$(pyenv init -)"
 
+# plugins (auto-clone on first use)
 ZSH_PLUGIN_DIR="${ZDOTDIR:-$HOME/.config/zsh}/plugins"
 ZSH_HIGHLIGHT_DIR="$ZSH_PLUGIN_DIR/zsh-syntax-highlighting"
 ZSH_HISTORY_SUBSTRING_SEARCH_DIR="$ZSH_PLUGIN_DIR/zsh-history-substring-search"
+[ -d "$ZSH_HIGHLIGHT_DIR" ] || git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "$ZSH_HIGHLIGHT_DIR"
+[ -d "$ZSH_HISTORY_SUBSTRING_SEARCH_DIR" ] || git clone https://github.com/TomasGadea/zsh-history-substring-search.git "$ZSH_HISTORY_SUBSTRING_SEARCH_DIR"
 [ -f "$ZSH_HIGHLIGHT_DIR/zsh-syntax-highlighting.zsh" ] && source "$ZSH_HIGHLIGHT_DIR/zsh-syntax-highlighting.zsh"
 [ -f "$ZSH_HISTORY_SUBSTRING_SEARCH_DIR/zsh-history-substring-search.zsh" ] && source "$ZSH_HISTORY_SUBSTRING_SEARCH_DIR/zsh-history-substring-search.zsh"
 

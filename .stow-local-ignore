@@ -27,3 +27,11 @@ _darcs
 ^/COPYING
 ^/bootstrap/*
 \.DS_Store
+
+# Runtime data (not managed by dotfiles)
+^/\.local/share
+^/\.local/state
+^/\.config/opencode/node_modules
+^/\.config/opencode/package\.json
+^/\.config/opencode/package-lock\.json
+^/\.config/opencode/bun\.lock

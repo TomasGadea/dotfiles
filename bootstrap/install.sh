@@ -12,6 +12,6 @@ case "$shell" in
         ;;
 esac
 
-command -v stow > /dev/null && stow . && exit 0
+command -v stow > /dev/null && stow --no-folding . && exit 0
 
 echo "stow is not present" && exit 1
