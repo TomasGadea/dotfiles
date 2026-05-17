@@ -39,16 +39,17 @@ changetheme() {
     local alacritty_config="$HOME/.config/alacritty/alacritty.toml"
     local alacritty_themes="$HOME/.config/alacritty/themes"
     local theme_file="$HOME/.local/state/theme"
+    local opencode_tui="$HOME/.config/opencode/tui.json"
 
-    local alacritty_theme tmux_flavor desc
+    local alacritty_theme tmux_flavor opencode_theme desc
     case "$1" in
-        latte)     alacritty_theme="latte";           tmux_flavor="latte";     desc="Catppuccin Latte (light)" ;;
-        frappe)    alacritty_theme="frappe";           tmux_flavor="frappe";    desc="Catppuccin Frappe (medium dark)" ;;
-        macchiato) alacritty_theme="macchiato";        tmux_flavor="macchiato"; desc="Catppuccin Macchiato (dark)" ;;
-        mocha)     alacritty_theme="mocha";            tmux_flavor="mocha";     desc="Catppuccin Mocha (darkest)" ;;
-        solarized) alacritty_theme="solarized_light";  tmux_flavor="solarized_light";   desc="Solarized Light" ;;
-        rosepine)  alacritty_theme="rose_pine_dawn";   tmux_flavor="rose_pine_dawn";    desc="Rose Pine Dawn (light)" ;;
-        gruvbox)   alacritty_theme="gruvbox_light";    tmux_flavor="gruvbox_light";     desc="Gruvbox Light" ;;
+        latte)     alacritty_theme="latte";           tmux_flavor="latte";     opencode_theme="system"; desc="Catppuccin Latte (light)" ;;
+        frappe)    alacritty_theme="frappe";           tmux_flavor="frappe";    opencode_theme="catppuccin"; desc="Catppuccin Frappe (medium dark)" ;;
+        macchiato) alacritty_theme="macchiato";        tmux_flavor="macchiato"; opencode_theme="catppuccin-macchiato"; desc="Catppuccin Macchiato (dark)" ;;
+        mocha)     alacritty_theme="mocha";            tmux_flavor="mocha";     opencode_theme="catppuccin-macchiato"; desc="Catppuccin Mocha (darkest)" ;;
+        solarized) alacritty_theme="solarized_light";  tmux_flavor="solarized_light";   opencode_theme="system"; desc="Solarized Light" ;;
+        rosepine)  alacritty_theme="rose_pine_dawn";   tmux_flavor="rose_pine_dawn";    opencode_theme="system"; desc="Rose Pine Dawn (light)" ;;
+        gruvbox)   alacritty_theme="gruvbox_light";    tmux_flavor="gruvbox_light";     opencode_theme="system"; desc="Gruvbox Light" ;;
         *)
             echo "Usage: changetheme <theme>"
             echo
@@ -78,6 +79,9 @@ changetheme() {
 
     # update alacritty (live-reloads automatically)
     sed -i '' 's|^import = .*|import = ["~/.config/alacritty/themes/'"$alacritty_theme"'.toml"]|' "$alacritty_config"
+
+    # update opencode tui theme
+    printf '{\n  "$schema": "https://opencode.ai/tui.json",\n  "theme": "%s"\n}\n' "$opencode_theme" > "$opencode_tui"
 
     # update tmux
     if [ -n "$TMUX" ]; then
