@@ -78,7 +78,10 @@ changetheme() {
     echo "$tmux_flavor" > "$HOME/.local/state/tmux_flavor"
 
     # update alacritty (live-reloads automatically)
-    sed -i '' 's|^import = .*|import = ["~/.config/alacritty/themes/'"$alacritty_theme"'.toml"]|' "$alacritty_config"
+    # avoid sed -i which breaks symlinks and creates new inodes (defeats kqueue file watching)
+    local new_config
+    new_config=$(sed 's|^import = .*|import = ["~/.config/alacritty/themes/'"$alacritty_theme"'.toml"]|' "$alacritty_config")
+    printf '%s\n' "$new_config" > "$alacritty_config"
 
     # update opencode tui theme
     printf '{\n  "$schema": "https://opencode.ai/tui.json",\n  "theme": "%s"\n}\n' "$opencode_theme" > "$opencode_tui"
