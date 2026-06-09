@@ -1,4 +1,9 @@
-alias ls='ls --color=auto'
+# portable ls color: GNU uses --color, BSD/macOS uses -G (+ CLICOLOR already set)
+if ls --color=auto . >/dev/null 2>&1; then
+    alias ls='ls --color=auto'   # GNU/Linux
+else
+    alias ls='ls -G'             # BSD/macOS
+fi
 alias dir='dir --color=auto'
 alias vdir='vdir --color=auto'
 alias grep='grep --color=auto'
