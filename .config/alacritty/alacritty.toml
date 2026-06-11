@@ -1,5 +1,5 @@
 [general]
-import = ["~/.config/alacritty/themes/mocha.toml"]
+import = ["~/.config/alacritty/themes/gruvbox_light.toml"]
 
 [font]
 size = 10.0
