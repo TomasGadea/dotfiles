@@ -9,8 +9,8 @@ if ! command -v brew > /dev/null; then
 fi
 [ -x /opt/homebrew/bin/brew ] && eval "$(/opt/homebrew/bin/brew shellenv)"
 
-# stow=required, nvim/tmux=used by EDITOR + aliases
-brew install stow nvim tmux
+# stow=required, nvim/tmux=used by EDITOR + aliases, ripgrep=required by telescope live_grep
+brew install stow nvim tmux ripgrep
 
 shell=$(basename "$SHELL")
 profile_path=".config/shell/profile"
