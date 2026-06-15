@@ -107,3 +107,6 @@ export PATH=/Users/tomas/.opencode/bin:$PATH
 
 # bun completions
 [ -s "/Users/tomas/.bun/_bun" ] && source "/Users/tomas/.bun/_bun"
+
+
+export TEMPORAL_ENV=fleetline
