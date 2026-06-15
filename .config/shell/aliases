@@ -50,3 +50,11 @@ alias oc="opencode"
 alias meetings="cd '${MEETINGS_DIR}'"
 
 alias master="cd '${XDG_DOCUMENTS_DIR}/master'"
+
+
+# Temporal
+alias tmpwf='temporal workflow show --workflow-id'
+alias tmplist='temporal workflow list --limit 20'
+alias tmpfailed='temporal workflow list --query "ExecutionStatus=\"Failed\"" --limit 20'
+# extract job_id from a Temporal workflow URL
+solveid() { echo "$1" | sed 's/^.*solve-//' | cut -d/ -f1; }
