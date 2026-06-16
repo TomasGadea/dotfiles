@@ -1,19 +1,26 @@
 return {
   'nvim-treesitter/nvim-treesitter',
-  branch = 'master',
+  branch = 'main',
+  lazy = false,
   build = ':TSUpdate',
-  event = { 'BufReadPost', 'BufNewFile' },
   config = function()
-    require('nvim-treesitter.configs').setup {
-      ensure_installed = {
-        "javascript", "typescript", "python", "sql",
-        "c", "cpp", "lua", "vim", "vimdoc",
-        "query", "markdown", "markdown_inline", "dockerfile", "jinja",
-      },
-      sync_install = false,
-      auto_install = true,
-      highlight = { enable = true },
+    -- The `main` branch (required for Neovim 0.12+) has a different API than
+    -- `master`: there is no `configs.setup` with `ensure_installed`/`highlight`.
+    -- Parsers are installed explicitly, and highlighting is started per-buffer.
+    require('nvim-treesitter').install {
+      'javascript', 'typescript', 'tsx', 'python', 'sql',
+      'c', 'cpp', 'lua', 'vim', 'vimdoc',
+      'query', 'markdown', 'markdown_inline', 'dockerfile', 'jinja',
+      'yaml', 'json',
     }
+
+    -- Enable treesitter highlighting on any buffer whose filetype has a parser.
+    vim.api.nvim_create_autocmd('FileType', {
+      callback = function(args)
+        -- `vim.treesitter.start` derives the language from the filetype; wrap in
+        -- pcall so files without an installed parser fall back silently.
+        pcall(vim.treesitter.start, args.buf)
+      end,
+    })
   end,
 }
-
