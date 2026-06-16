@@ -48,6 +48,8 @@ dj() {
 }
 alias oc="opencode"
 alias meetings="cd '${MEETINGS_DIR}'"
+alias obs="cd '${OBSIDIAN_DIR}'"
+alias obsidian="cd '${OBSIDIAN_DIR}'"
 
 alias master="cd '${XDG_DOCUMENTS_DIR}/master'"
 
