@@ -1,0 +1,20 @@
+# ~/.rgignore — extra ignore rules for ripgrep.
+#
+# ripgrep reads this file from any parent directory, with HIGHER precedence than
+# a repo's .gitignore. Because it's stowed to $HOME, it applies to every project
+# under your home directory (Telescope find_files + live_grep use ripgrep).
+#
+# Use it to RE-INCLUDE files that are gitignored but you still want to search.
+# A line starting with `!` un-ignores (re-includes) a pattern; a bare pattern
+# ignores it. This is the "sweetspot": .gitignore keeps node_modules/build/cache
+# dirs out (fast, like VSCode), while the rules below pull the useful bits back.
+
+# --- Environment files (usually gitignored, but we DO want to search them) ---
+!.env
+!.env.*
+!*.env
+!.envrc
+
+# Add more re-includes here as needed, e.g.:
+# !.npmrc
+# !config/secrets.example.yml
