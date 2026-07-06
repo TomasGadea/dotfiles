@@ -11,7 +11,7 @@ return {
       'javascript', 'typescript', 'tsx', 'python', 'sql',
       'c', 'cpp', 'lua', 'vim', 'vimdoc',
       'query', 'markdown', 'markdown_inline', 'dockerfile', 'jinja',
-      'yaml', 'json',
+      'yaml', 'json', 'bash',
     }
 
     -- Enable treesitter highlighting on any buffer whose filetype has a parser.
