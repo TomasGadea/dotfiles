@@ -61,6 +61,15 @@ elif [ "$ARG" == "dj" ]; then
     tmux new-session -d -s dj -n dj
     tmux send-keys -t dj:dj "dj" Enter
 
+    tmux new-window -t dj -n obsidian
+    tmux send-keys -t dj:obsidian "cd /Users/tomas/Documents/logs/obsidian-second-brain" Enter
+    tmux send-keys -t dj:obsidian "nvim ." Enter
+
+    tmux new-window -t dj -n meetings
+    tmux send-keys -t dj:meetings "meetings" Enter
+    tmux send-keys -t dj:meetings "nvim ." Enter
+
+    tmux select-window -t dj:dj
     tmux attach -t dj
 
 else
