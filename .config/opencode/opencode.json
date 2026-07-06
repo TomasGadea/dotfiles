@@ -12,6 +12,18 @@
           "name": "Laguna XS 2.1 (MLX 4bit)"
         }
       }
+    },
+    "ollama": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Ollama Local",
+      "options": {
+        "baseURL": "http://localhost:11434/v1"
+      },
+      "models": {
+        "qwen3.5:latest": {
+          "name": "Qwen 3.5 (Ollama)"
+        }
+      }
     }
   }
 }
