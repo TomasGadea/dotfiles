@@ -1,0 +1,17 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "provider": {
+    "mlx": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "MLX Local",
+      "options": {
+        "baseURL": "http://127.0.0.1:8080/v1"
+      },
+      "models": {
+        "mlx-community/Laguna-XS-2.1-4bit": {
+          "name": "Laguna XS 2.1 (MLX 4bit)"
+        }
+      }
+    }
+  }
+}
