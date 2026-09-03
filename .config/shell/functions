@@ -27,9 +27,12 @@ daily() {
         {
             echo "# $(date +'%Y-%m-%d')"
             echo
-            echo "## done"
-            echo "## doing"
-            echo "## todo"
+            echo "## general todos"
+            echo
+            echo "## today's todos"
+            echo "### done"
+            echo "### doing"
+            echo "### todo"
         } > "$file"
     fi
     vim "$file"
