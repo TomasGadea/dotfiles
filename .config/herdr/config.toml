@@ -29,6 +29,14 @@ rename_tab = "prefix+comma"
 reload_config = "prefix+r"
 resize_mode = "prefix+shift+r"
 
+# go to the previously used tab with prefix+l, as tmux last-window
+# (needs the plugin in .config/herdr/plugins/last-tab, linked with `herdr plugin link`)
+[[keys.command]]
+key = "prefix+l"
+type = "plugin_action"
+command = "tomas.last-tab.last-tab"
+description = "last tab"
+
 [ui]
 status_indicators = "dots"
 
