@@ -1,0 +1,39 @@
+onboarding = false
+
+[theme]
+# same theme family as tmux (catppuccin)
+name = "catppuccin"
+
+[keys]
+# same prefix as tmux (see .config/tmux/tmux.conf)
+prefix = ";"
+
+# split panes with h and v, as in tmux
+# (tmux "split-window -h" = side by side = herdr "split_vertical")
+split_vertical = "prefix+h"
+split_horizontal = "prefix+v"
+
+# zoom without prefix, as tmux "bind -n C-z resize-pane -Z"
+zoom = "ctrl+z"
+
+# switch panes with Alt-arrow without prefix
+focus_pane_left = "alt+left"
+focus_pane_down = "alt+down"
+focus_pane_up = "alt+up"
+focus_pane_right = "alt+right"
+
+# rename the tab (tmux window) with prefix+, as in tmux
+rename_tab = "prefix+comma"
+
+# reload config with prefix+r, as in tmux; resize mode takes the old reload key
+reload_config = "prefix+r"
+resize_mode = "prefix+shift+r"
+
+[ui]
+status_indicators = "dots"
+
+[ui.sound]
+enabled = true
+
+[ui.toast]
+delivery = "terminal"
