@@ -4,6 +4,11 @@ onboarding = false
 # same theme family as tmux (catppuccin)
 name = "catppuccin"
 
+# let the terminal background (translucent alacritty) show through
+[theme.custom]
+panel_bg = "reset"
+sidebar_bg = "reset"
+
 [keys]
 # same prefix as tmux (see .config/tmux/tmux.conf)
 prefix = ";"
