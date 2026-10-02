@@ -51,6 +51,27 @@ function M.load()
   local ok, err = pcall(vim.cmd, "colorscheme " .. theme.colorscheme)
   if not ok then
     vim.notify("Failed to set colorscheme: " .. tostring(err), vim.log.levels.ERROR)
+    return
+  end
+
+  M.make_transparent()
+end
+
+-- Clear background of main highlight groups so the translucent terminal shows through
+local transparent_groups = {
+  "Normal", "NormalNC", "NormalFloat", "FloatBorder", "SignColumn", "LineNr",
+  "FoldColumn", "EndOfBuffer", "MsgArea", "StatusLineNC", "TabLineFill",
+  "NvimTreeNormal", "NvimTreeNormalNC", "NvimTreeEndOfBuffer",
+  "TelescopeNormal", "TelescopeBorder", "TelescopePromptNormal", "TelescopePromptBorder",
+  "TelescopeResultsNormal", "TelescopePreviewNormal",
+}
+
+function M.make_transparent()
+  for _, group in ipairs(transparent_groups) do
+    local hl = vim.api.nvim_get_hl(0, { name = group, link = false })
+    hl.bg = nil
+    hl.ctermbg = nil
+    vim.api.nvim_set_hl(0, group, hl)
   end
 end
 
