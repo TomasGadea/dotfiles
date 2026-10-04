@@ -7,7 +7,7 @@ normal = { family = "0xProto Nerd Font Mono", style = "Regular" }
 
 # translucent background so the wallpaper shows through
 [window]
-opacity = 0.85
+opacity = 0.8
 blur = true
 
 [terminal.shell]
