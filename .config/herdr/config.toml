@@ -8,6 +8,9 @@ name = "catppuccin"
 [theme.custom]
 panel_bg = "reset"
 sidebar_bg = "reset"
+# stronger row highlights, so the active/selected workspace stands out on the translucent background
+active_row_bg = "#45475a"
+selection_bg = "#585b70"
 
 [keys]
 # same prefix as tmux (see .config/tmux/tmux.conf)
