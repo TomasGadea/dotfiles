@@ -25,6 +25,7 @@ split_horizontal = "prefix+v"
 zoom = "ctrl+z"
 
 # switch panes with Alt-arrow without prefix
+# (ctrl+hjkl also switch panes, through the vim-navigator plugin below)
 focus_pane_left = "alt+left"
 focus_pane_down = "alt+down"
 focus_pane_up = "alt+up"
@@ -44,6 +45,33 @@ key = "prefix+l"
 type = "plugin_action"
 command = "tomas.last-tab.last-tab"
 description = "last tab"
+
+# switch panes with ctrl+hjkl without prefix, aware of vim splits, as vim-tmux-navigator in tmux
+# (needs the plugin in .config/herdr/plugins/vim-navigator, linked with `herdr plugin link`,
+# and the <C-hjkl> mappings in .config/nvim/lua/config/remap.lua)
+[[keys.command]]
+key = "ctrl+h"
+type = "plugin_action"
+command = "tomas.vim-navigator.left"
+description = "pane or vim split left"
+
+[[keys.command]]
+key = "ctrl+j"
+type = "plugin_action"
+command = "tomas.vim-navigator.down"
+description = "pane or vim split down"
+
+[[keys.command]]
+key = "ctrl+k"
+type = "plugin_action"
+command = "tomas.vim-navigator.up"
+description = "pane or vim split up"
+
+[[keys.command]]
+key = "ctrl+l"
+type = "plugin_action"
+command = "tomas.vim-navigator.right"
+description = "pane or vim split right"
 
 [ui]
 status_indicators = "dots"

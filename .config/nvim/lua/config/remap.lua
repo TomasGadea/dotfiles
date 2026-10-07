@@ -16,7 +16,23 @@ vim.keymap.set("n", "N", "Nzzzv")
 
 
 
-vim.keymap.set("n", "<C-h>", ":TmuxNavigateLeft<cr>")
-vim.keymap.set("n", "<C-l>", ":TmuxNavigateRight<cr>")
-vim.keymap.set("n", "<C-k>", ":TmuxNavigateUp<cr>")
-vim.keymap.set("n", "<C-j>", ":TmuxNavigateDown<cr>")
+-- move between splits, and to the next tmux/herdr pane at the edge
+-- (herdr side: .config/herdr/plugins/vim-navigator)
+local function navigate(wincmd, tmux_cmd, herdr_direction)
+  return function()
+    if vim.env.TMUX then
+      vim.cmd(tmux_cmd)
+      return
+    end
+    local win = vim.api.nvim_get_current_win()
+    vim.cmd("wincmd " .. wincmd)
+    if win == vim.api.nvim_get_current_win() and vim.env.HERDR_PANE_ID then
+      vim.system({ vim.env.HERDR_BIN_PATH or "herdr", "pane", "focus",
+        "--pane", vim.env.HERDR_PANE_ID, "--direction", herdr_direction })
+    end
+  end
+end
+vim.keymap.set("n", "<C-h>", navigate("h", "TmuxNavigateLeft", "left"))
+vim.keymap.set("n", "<C-l>", navigate("l", "TmuxNavigateRight", "right"))
+vim.keymap.set("n", "<C-k>", navigate("k", "TmuxNavigateUp", "up"))
+vim.keymap.set("n", "<C-j>", navigate("j", "TmuxNavigateDown", "down"))

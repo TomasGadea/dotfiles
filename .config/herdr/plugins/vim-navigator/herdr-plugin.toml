@@ -1,0 +1,32 @@
+id = "tomas.vim-navigator"
+name = "Vim navigator"
+version = "0.1.0"
+min_herdr_version = "0.9.0"
+description = "Move between herdr panes and vim splits with ctrl+hjkl, as vim-tmux-navigator"
+platforms = ["linux", "macos"]
+
+# bound to ctrl+h/j/k/l in config.toml. if vim runs in the focused pane, the key
+# goes to vim, and vim focuses the next herdr pane at its edge (see nvim remap.lua)
+[[actions]]
+id = "left"
+title = "Navigate left"
+contexts = ["workspace"]
+command = ["sh", "nav.sh", "left", "ctrl+h"]
+
+[[actions]]
+id = "down"
+title = "Navigate down"
+contexts = ["workspace"]
+command = ["sh", "nav.sh", "down", "ctrl+j"]
+
+[[actions]]
+id = "up"
+title = "Navigate up"
+contexts = ["workspace"]
+command = ["sh", "nav.sh", "up", "ctrl+k"]
+
+[[actions]]
+id = "right"
+title = "Navigate right"
+contexts = ["workspace"]
+command = ["sh", "nav.sh", "right", "ctrl+l"]
