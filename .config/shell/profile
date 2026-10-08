@@ -30,6 +30,9 @@ export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 export EDITOR="vim"
 command -v nvim > /dev/null && export EDITOR="nvim"
 
+# AWS
+export AWS_PROFILE=trc
+
 # Created by `pipx` on 2024-11-08 21:14:37
 export PATH="$HOME/.npm-packages/bin:$PATH"
 
