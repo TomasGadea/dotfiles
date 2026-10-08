@@ -1,0 +1,24 @@
+# ported from .config/alacritty/alacritty.toml
+
+# theme files are in .config/ghostty/themes (converted from .config/alacritty/themes).
+# changetheme (see .config/shell/functions) rewrites this line
+theme = mocha
+
+font-family = "0xProto Nerd Font Mono"
+font-size = 10
+
+# translucent background so the wallpaper shows through
+background-opacity = 0.8
+background-blur = true
+
+# thick block cursor everywhere. the shell integration changes the cursor to a
+# thin bar at the prompt, so turn off only that feature
+cursor-style = block
+shell-integration-features = no-cursor
+
+command = /bin/zsh --login
+
+term = xterm-256color
+
+# cursor_warp shader from https://github.com/sahaj-b/cursor-shaders (unchanged copy)
+custom-shader = shaders/cursor_warp.glsl

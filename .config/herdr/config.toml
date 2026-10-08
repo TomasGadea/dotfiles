@@ -4,7 +4,7 @@ onboarding = false
 # same theme family as tmux (catppuccin)
 name = "catppuccin"
 
-# let the terminal background (translucent alacritty) show through
+# let the terminal background (translucent alacritty or ghostty) show through
 [theme.custom]
 panel_bg = "reset"
 sidebar_bg = "reset"
