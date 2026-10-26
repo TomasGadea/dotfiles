@@ -35,3 +35,4 @@ _darcs
 ^/\.config/opencode/package\.json
 ^/\.config/opencode/package-lock\.json
 ^/\.config/opencode/bun\.lock
+^/\.claude/settings\.local\.json

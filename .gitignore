@@ -67,3 +67,6 @@ TODO.md
 !.local/bin/fry
 !.local/bin/mvdw
 !.local/bin/tmux-init
+
+# claude code (per-machine permissions)
+.claude/settings.local.json
