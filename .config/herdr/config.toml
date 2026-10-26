@@ -78,6 +78,9 @@ status_indicators = "dots"
 
 [ui.sound]
 enabled = true
+# custom mp3 for all notifications, relative to this file
+# (~/.config/herdr/sounds is a link to .config/herdr/sounds in the dotfiles)
+path = "sounds/perfect.mp3"
 
 [ui.toast]
 delivery = "terminal"
