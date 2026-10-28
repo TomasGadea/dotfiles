@@ -1,0 +1,54 @@
+{
+  "version": 4,
+  "lines": [
+    [
+      { "id": "1", "type": "model", "color": "ansi256:246", "rawValue": true },
+      { "id": "a0fe4ce7-f2d9-4584-8d4b-7fa202f5c122", "type": "custom-text", "color": "ansi256:246", "customText": " (" },
+      { "id": "6e418d08-70e5-4d05-a97e-58b27c6b3114", "type": "thinking-effort", "color": "ansi256:246", "rawValue": true },
+      { "id": "9154a89f-a039-4220-9415-dd6e90f5fd0e", "type": "custom-symbol", "color": "ansi256:246", "customSymbol": ")" },
+      { "id": "2", "type": "separator", "color": "ansi256:246" },
+      { "id": "3", "type": "context-length", "color": "ansi256:246" },
+      { "id": "4", "type": "separator", "color": "ansi256:246" },
+      { "id": "5", "type": "git-branch", "color": "ansi256:246" },
+      { "id": "c1ecbb9b-7048-4932-b70f-2a0802b24313", "type": "custom-symbol", "color": "green", "customSymbol": " " },
+      { "id": "2fa49801-b6ca-453e-9272-44ed3a2bf200", "type": "git-status", "color": "ansi256:246" },
+      { "id": "51e78737-de3a-441b-838b-a1834b291359", "type": "separator", "color": "ansi256:246" },
+      {
+        "id": "c7dd4c34-d073-41d5-b80c-1c5569ba2b62",
+        "type": "cache-timer",
+        "color": "ansi256:246",
+        "rawValue": true,
+        "metadata": {
+          "symbolHot": "",
+          "symbolFresh": "",
+          "symbolDraining": "",
+          "symbolUrgent": "",
+          "symbolCold": "",
+          "ttlSeconds": "3600"
+        }
+      }
+    ],
+    [],
+    []
+  ],
+  "flexMode": "full",
+  "compactThreshold": 60,
+  "colorLevel": 2,
+  "defaultPaddingSide": "both",
+  "inheritSeparatorColors": false,
+  "globalBold": false,
+  "numberFormat": { "token": { "style": "compact" } },
+  "gitCacheTtlSeconds": 5,
+  "terminalWidthCacheTtlSeconds": 5,
+  "customCommandCacheTtlSeconds": 0,
+  "minimalistMode": true,
+  "powerline": {
+    "enabled": false,
+    "separators": [""],
+    "separatorInvertBackground": [false],
+    "startCaps": [],
+    "endCaps": [],
+    "autoAlign": false,
+    "continueThemeAcrossLines": false
+  }
+}
