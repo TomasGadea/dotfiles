@@ -1,4 +1,8 @@
 {
+  "attribution": {
+    "commit": "",
+    "pr": ""
+  },
   "permissions": {
     "allow": [
       "Bash",
@@ -10,10 +14,6 @@
     ]
   },
   "model": "opus",
-  "attribution": {
-    "commit": "",
-    "pr": ""
-  },
   "hooks": {
     "SessionStart": [
       {
@@ -28,8 +28,23 @@
       }
     ]
   },
+  "statusLine": {
+    "type": "command",
+    "command": "npx -y ccstatusline@latest",
+    "padding": 0,
+    "refreshInterval": 10
+  },
   "enabledPlugins": {
-    "mattpocock-skills@claude-plugins-official": true
+    "mattpocock-skills@claude-plugins-official": true,
+    "codex-style@lkm-schulz-plugins": true
+  },
+  "extraKnownMarketplaces": {
+    "lkm-schulz-plugins": {
+      "source": {
+        "source": "github",
+        "repo": "lkm-schulz/claude-plugins"
+      }
+    }
   },
   "outputStyle": "Simple",
   "effortLevel": "high",
@@ -38,12 +53,13 @@
       "effortLevel": "medium"
     }
   },
+  "pluginConfigs": {
+    "codex-style@lkm-schulz-plugins": {
+      "options": {
+        "replyStyle": "bar"
+      }
+    }
+  },
   "skipDangerousModePermissionPrompt": true,
-  "theme": "auto",
-  "statusLine": {
-    "type": "command",
-    "command": "npx -y ccstatusline@latest",
-    "padding": 0,
-    "refreshInterval": 10
-  }
+  "theme": "auto"
 }
