@@ -21,6 +21,10 @@ fi
 
 # CLI tools and apps (see bootstrap/Brewfile)
 if [ "$apps" = 1 ]; then
+    # Homebrew loads nothing from a third-party tap until you trust it,
+    # and a Brewfile cannot do that.
+    brew tap hashicorp/tap
+    brew trust --formula hashicorp/tap/terraform
     brew bundle --verbose --file=bootstrap/Brewfile || echo "WARN: some Brewfile entries failed"
 else
     brew install stow neovim tmux ripgrep tree-sitter-cli
