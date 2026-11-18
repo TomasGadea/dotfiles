@@ -47,6 +47,13 @@ sudo pmset -a displaysleep 0   # screen never sleeps
 defaults write com.apple.menuextra.clock ShowSeconds -bool true
 defaults -currentHost write com.apple.controlcenter BatteryShowPercentage -bool true
 
+# --- login items ---
+login_items=$(osascript -e 'tell application "System Events" to get the name of every login item')
+case "$login_items" in
+    *Rectangle*) ;;
+    *) osascript -e 'tell application "System Events" to make login item at end with properties {path:"/Applications/Rectangle.app", hidden:false}' > /dev/null ;;
+esac
+
 # --- app preferences exported into bootstrap/prefs ---
 dir="$(dirname "$0")/prefs"
 for plist in "$dir"/*.plist; do
