@@ -1,0 +1,14 @@
+#!/bin/sh
+# Find the `defaults` key for a setting you change in System Settings.
+# Usage: bootstrap/defaults-diff   (then change the setting, then press Enter)
+# Copy the result into bootstrap/macos.sh.
+tmp=$(mktemp -d)
+defaults read > "$tmp/before" 2>/dev/null
+defaults -currentHost read > "$tmp/before-host" 2>/dev/null
+printf "Change the setting now, then press Enter... "
+read -r _
+defaults read > "$tmp/after" 2>/dev/null
+defaults -currentHost read > "$tmp/after-host" 2>/dev/null
+diff "$tmp/before" "$tmp/after"
+diff "$tmp/before-host" "$tmp/after-host" && true
+rm -rf "$tmp"

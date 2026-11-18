@@ -1,0 +1,76 @@
+# Everything a new Mac needs. Install with: brew bundle --file=bootstrap/Brewfile
+# Check drift on this Mac with: brew bundle check --verbose --file=bootstrap/Brewfile
+# List installed things not in this file: brew bundle cleanup --file=bootstrap/Brewfile
+
+tap "hashicorp/tap"
+
+# --- core (required by the dotfiles) ---
+brew "stow"
+brew "neovim"
+brew "tmux"
+brew "ripgrep"          # telescope live_grep
+brew "tree-sitter-cli"  # nvim-treesitter parsers
+brew "gh"
+brew "jq"
+brew "tree"
+brew "colordiff"
+brew "chafa"
+brew "mosh"
+brew "just"
+brew "mise"
+brew "age"
+
+# --- languages / dev ---
+brew "node"
+brew "pnpm"
+brew "uv"
+brew "ipython"
+brew "mlx-lm"
+brew "ffmpeg"
+
+# --- containers / cloud ---
+brew "colima"
+brew "docker"
+brew "docker-compose"
+brew "kubernetes-cli"
+brew "awscli"
+brew "cloudflared"
+brew "hashicorp/tap/terraform"
+
+# --- terminal + window management ---
+cask "ghostty"
+cask "rectangle"
+cask "alt-tab"
+cask "alfred"
+cask "font-0xproto-nerd-font"
+
+# --- input devices ---
+cask "logi-options+"
+
+# --- network / sync / security ---
+cask "tailscale-app"
+cask "syncthing-app"
+cask "keepassxc"
+
+# --- editors / AI ---
+cask "visual-studio-code"
+cask "claude"
+cask "ollama-app"
+cask "spokenly"
+
+# --- work / communication ---
+cask "slack"
+cask "linear"
+cask "granola"
+cask "zoom"
+cask "microsoft-outlook"
+cask "obsidian"
+cask "brave-browser"
+cask "spotify"
+
+# --- data / research ---
+cask "dbeaver-community"
+cask "zotero"
+cask "gcloud-cli"
+cask "session-manager-plugin"
+cask "mactex"
