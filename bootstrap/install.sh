@@ -21,7 +21,7 @@ fi
 
 # CLI tools and apps (see bootstrap/Brewfile)
 if [ "$apps" = 1 ]; then
-    brew bundle --file=bootstrap/Brewfile || echo "WARN: some Brewfile entries failed"
+    brew bundle --verbose --file=bootstrap/Brewfile || echo "WARN: some Brewfile entries failed"
 else
     brew install stow neovim tmux ripgrep tree-sitter-cli
 fi
