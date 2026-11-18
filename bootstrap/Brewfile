@@ -38,11 +38,11 @@ brew "cloudflared"
 brew "hashicorp/tap/terraform"
 
 # --- terminal + window management ---
-# ghostty: not here, install.sh installs a pinned version
+cask "ghostty"
 cask "rectangle"
 cask "alt-tab"
 cask "alfred"
-cask "font-0xproto-nerd-font"
+# font-0xproto-nerd-font: not here, install.sh installs a pinned version
 
 # --- input devices ---
 cask "logi-options+"
