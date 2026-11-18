@@ -42,6 +42,21 @@ if [ "$current" != "$ghostty_version" ]; then
     rm -rf "$tmp"
 fi
 
+# 0xProto Nerd Font, pinned at 3.4.0: 3.5.x has wider letter spacing.
+# Homebrew casks cannot pin a version, so download the release.
+font_version=3.4.0
+font_sha256=e50e7fec9efbe1eb986b65f01e210098e122a3f495db24e6624bdcbca52da11d
+font_check="$HOME/Library/Fonts/0xProtoNerdFontMono-Regular.ttf"
+if ! strings "$font_check" 2>/dev/null | grep -q "Nerd Fonts $font_version"; then
+    brew list --cask font-0xproto-nerd-font > /dev/null 2>&1 && brew uninstall --cask font-0xproto-nerd-font
+    tmp=$(mktemp -d)
+    curl -fsSL -o "$tmp/0xProto.zip" \
+        "https://github.com/ryanoasis/nerd-fonts/releases/download/v$font_version/0xProto.zip"
+    echo "$font_sha256  $tmp/0xProto.zip" | shasum -a 256 -c -
+    unzip -oq "$tmp/0xProto.zip" '*.ttf' -d "$HOME/Library/Fonts"
+    rm -rf "$tmp"
+fi
+
 # Tools that are not in Homebrew (both self-update into ~/.local/bin)
 mkdir -p "$HOME/.local/bin"
 if ! command -v claude > /dev/null && [ ! -x "$HOME/.local/bin/claude" ]; then
