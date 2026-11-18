@@ -1,6 +1,10 @@
+local vault = "~/Documents/logs/obsidian-second-brain"
+
 return {
   "obsidian-nvim/obsidian.nvim",
   version = "*", -- use latest release, remove to use latest commit
+  -- obsidian.nvim fails at startup if no workspace exists, so load it only where the vault is
+  cond = vim.fn.isdirectory(vim.fn.expand(vault)) == 1,
   ---@module 'obsidian'
   ---@type obsidian.config
   opts = {
@@ -8,7 +12,7 @@ return {
     workspaces = {
       {
         name = "obsidian-second-brain",
-        path = "~/Documents/logs/obsidian-second-brain",
+        path = vault,
       },
     },
     footer = {
