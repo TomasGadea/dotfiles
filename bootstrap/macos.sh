@@ -40,6 +40,9 @@ defaults write com.apple.finder FXPreferredViewStyle -string icnv   # icon view
 defaults write com.apple.finder FXDefaultSearchScope -string SCcf  # search current folder
 defaults write com.apple.finder NewWindowTarget -string PfHm       # new window opens home
 
+# --- power ---
+sudo pmset -a displaysleep 0   # screen never sleeps
+
 # --- menu bar ---
 defaults write com.apple.menuextra.clock ShowSeconds -bool true
 
