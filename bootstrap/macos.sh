@@ -5,6 +5,11 @@ set -e
 # --- keyboard ---
 defaults write NSGlobalDomain KeyRepeat -int 2
 defaults write NSGlobalDomain InitialKeyRepeat -int 15
+# Spotlight shortcut: option+space instead of cmd+space
+# (hotkey 64; parameters = ascii code, key code 49 = space, modifier 524288 = option)
+defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 64 \
+    "<dict><key>enabled</key><true/><key>value</key><dict><key>type</key><string>standard</string><key>parameters</key><array><integer>32</integer><integer>49</integer><integer>524288</integer></array></dict></dict>"
+/System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u 2>/dev/null || true
 
 # --- mouse / trackpad (speeds: System Settings > Mouse / Trackpad) ---
 defaults write NSGlobalDomain com.apple.mouse.scaling -float 2
