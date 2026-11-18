@@ -16,5 +16,5 @@ These steps need a login, a license, or a GUI permission.
 
 - New app or CLI tool: add it to `bootstrap/Brewfile`.
   `brew bundle cleanup --file=bootstrap/Brewfile` lists installed things that are not in the file.
-- New macOS setting: run `bootstrap/defaults-diff`, change the setting, and add the key to `bootstrap/macos.sh`.
+- New macOS setting: add the `defaults write` line to `bootstrap/macos.sh`.
 - New app preference to copy: `defaults export <domain> bootstrap/prefs/<domain>.plist`.

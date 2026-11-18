@@ -1,6 +1,5 @@
 #!/bin/sh
 # macOS system settings. Safe to run again at any time.
-# To find the key for a new setting, use bootstrap/defaults-diff.
 set -e
 
 # --- keyboard ---
