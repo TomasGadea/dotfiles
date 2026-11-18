@@ -5,6 +5,7 @@ onboarding = false
 name = "catppuccin"
 
 # let the terminal background (translucent ghostty) show through
+auto_switch = false
 [theme.custom]
 panel_bg = "reset"
 sidebar_bg = "reset"

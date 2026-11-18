@@ -103,10 +103,10 @@ conda() {
 
 
 # opencode
-export PATH=/Users/tomas/.opencode/bin:$PATH
+export PATH=$HOME/.opencode/bin:$PATH
 
 # bun completions
-[ -s "/Users/tomas/.bun/_bun" ] && source "/Users/tomas/.bun/_bun"
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
 
 export TEMPORAL_ENV=fleetline

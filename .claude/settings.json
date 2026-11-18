@@ -21,7 +21,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash '/Users/tomas/.claude/hooks/herdr-agent-state.sh' session",
+            "command": "bash \"$HOME/.claude/hooks/herdr-agent-state.sh\" session",
             "timeout": 10
           }
         ]
@@ -51,6 +51,9 @@
   "modelSettings": {
     "claude-opus-5-5": {
       "effortLevel": "medium"
+    },
+    "claude-sonnet-5-5": {
+      "effortLevel": "low"
     }
   },
   "pluginConfigs": {
@@ -61,5 +64,8 @@
     }
   },
   "skipDangerousModePermissionPrompt": true,
-  "theme": "auto"
+  "theme": "auto",
+  "inputNeededNotifEnabled": true,
+  "agentPushNotifEnabled": true,
+  "promptSuggestionEnabled": false
 }
