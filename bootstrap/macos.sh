@@ -56,6 +56,10 @@ for app in Rectangle Syncthing; do
     esac
 done
 
+# --- wallpaper (all screens) ---
+wallpaper="$(cd "$(dirname "$0")" && pwd)/wallpaper.jpeg"
+osascript -e "tell application \"System Events\" to set picture of every desktop to \"$wallpaper\""
+
 # --- app preferences exported into bootstrap/prefs ---
 dir="$(dirname "$0")/prefs"
 for plist in "$dir"/*.plist; do
