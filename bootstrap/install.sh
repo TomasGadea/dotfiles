@@ -26,6 +26,22 @@ else
     brew install stow neovim tmux ripgrep tree-sitter-cli
 fi
 
+# Ghostty, pinned (Homebrew casks cannot pin a version).
+# To change the version, edit ghostty_version.
+ghostty_version=1.3.1
+ghostty_app=/Applications/Ghostty.app
+current=$(defaults read "$ghostty_app/Contents/Info.plist" CFBundleShortVersionString 2>/dev/null || true)
+if [ "$current" != "$ghostty_version" ]; then
+    brew list --cask ghostty > /dev/null 2>&1 && brew uninstall --cask ghostty
+    tmp=$(mktemp -d)
+    curl -fsSL -o "$tmp/Ghostty.dmg" "https://release.files.ghostty.org/$ghostty_version/Ghostty.dmg"
+    hdiutil attach -nobrowse -quiet -mountpoint "$tmp/mnt" "$tmp/Ghostty.dmg"
+    rm -rf "$ghostty_app"
+    cp -R "$tmp/mnt/Ghostty.app" "$ghostty_app"
+    hdiutil detach -quiet "$tmp/mnt"
+    rm -rf "$tmp"
+fi
+
 # Tools that are not in Homebrew (both self-update into ~/.local/bin)
 mkdir -p "$HOME/.local/bin"
 if ! command -v claude > /dev/null && [ ! -x "$HOME/.local/bin/claude" ]; then
