@@ -49,10 +49,12 @@ defaults -currentHost write com.apple.controlcenter BatteryShowPercentage -bool 
 
 # --- login items ---
 login_items=$(osascript -e 'tell application "System Events" to get the name of every login item')
-case "$login_items" in
-    *Rectangle*) ;;
-    *) osascript -e 'tell application "System Events" to make login item at end with properties {path:"/Applications/Rectangle.app", hidden:false}' > /dev/null ;;
-esac
+for app in Rectangle Syncthing; do
+    case "$login_items" in
+        *"$app"*) ;;
+        *) osascript -e "tell application \"System Events\" to make login item at end with properties {path:\"/Applications/$app.app\", hidden:false}" > /dev/null ;;
+    esac
+done
 
 # --- app preferences exported into bootstrap/prefs ---
 dir="$(dirname "$0")/prefs"
