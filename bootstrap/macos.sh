@@ -45,6 +45,7 @@ sudo pmset -a displaysleep 0   # screen never sleeps
 
 # --- menu bar ---
 defaults write com.apple.menuextra.clock ShowSeconds -bool true
+defaults -currentHost write com.apple.controlcenter BatteryShowPercentage -bool true
 
 # --- app preferences exported into bootstrap/prefs ---
 dir="$(dirname "$0")/prefs"
@@ -53,5 +54,5 @@ for plist in "$dir"/*.plist; do
     defaults import "$(basename "$plist" .plist)" "$plist"
 done
 
-killall Dock Finder SystemUIServer 2>/dev/null || true
+killall Dock Finder SystemUIServer ControlCenter 2>/dev/null || true
 echo "macOS settings applied. Log out and in for keyboard and mouse changes."
