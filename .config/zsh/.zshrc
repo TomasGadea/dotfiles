@@ -5,6 +5,10 @@ HISTFILE="$XDG_STATE_HOME/zsh/history"
 
 typeset -U path # declare $PATH as a unique array
 
+# herdr sets TERM_PROGRAM=herdr, which hyperlink detection does not know,
+# so tools like claude print links as plain text. force clickable (OSC 8) links
+[ "$TERM_PROGRAM" = herdr ] && export FORCE_HYPERLINK=1
+
 # saner defaults
 setopt autocd # auto cd into directory.
 setopt nomatch # output error if file doesn't match
