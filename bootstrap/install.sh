@@ -62,6 +62,12 @@ esac
 command -v stow > /dev/null || { echo "stow is not present"; exit 1; }
 stow --no-folding .
 
+# herdr plugins: stow puts the files in place, but herdr loads only linked plugins
+# (ctrl+hjkl and prefix+l in .config/herdr/config.toml call them)
+for plugin in .config/herdr/plugins/*/; do
+    "$HOME/.local/bin/herdr" plugin link "$PWD/$plugin" > /dev/null
+done
+
 # macOS settings
 [ "$macos" = 1 ] && sh bootstrap/macos.sh
 
