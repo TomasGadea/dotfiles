@@ -38,7 +38,7 @@ brew "cloudflared"
 brew "hashicorp/tap/terraform"
 
 # --- terminal + window management ---
-# ghostty: not here, install.sh installs a pinned version
+cask "ghostty"
 cask "rectangle"
 cask "alt-tab"
 cask "alfred"
