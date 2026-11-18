@@ -1,6 +1,6 @@
-# ported from .config/alacritty/alacritty.toml
+# ghostty config
 
-# theme files are in .config/ghostty/themes (converted from .config/alacritty/themes).
+# theme files are in .config/ghostty/themes.
 # changetheme (see .config/shell/functions) rewrites this line
 theme = mocha
 

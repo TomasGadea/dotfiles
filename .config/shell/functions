@@ -39,21 +39,20 @@ daily() {
 }
 
 changetheme() {
-    local alacritty_config="$HOME/.config/alacritty/alacritty.toml"
-    local alacritty_themes="$HOME/.config/alacritty/themes"
     local ghostty_config="$HOME/.config/ghostty/config"
+    local ghostty_themes="$HOME/.config/ghostty/themes"
     local theme_file="$HOME/.local/state/theme"
     local opencode_tui="$HOME/.config/opencode/tui.json"
 
-    local alacritty_theme tmux_flavor opencode_theme desc
+    local ghostty_theme tmux_flavor opencode_theme desc
     case "$1" in
-        latte)     alacritty_theme="latte";           tmux_flavor="latte";     opencode_theme="system"; desc="Catppuccin Latte (light)" ;;
-        frappe)    alacritty_theme="frappe";           tmux_flavor="frappe";    opencode_theme="system"; desc="Catppuccin Frappe (medium dark)" ;;
-        macchiato) alacritty_theme="macchiato";        tmux_flavor="macchiato"; opencode_theme="system"; desc="Catppuccin Macchiato (dark)" ;;
-        mocha)     alacritty_theme="mocha";            tmux_flavor="mocha";     opencode_theme="system"; desc="Catppuccin Mocha (darkest)" ;;
-        solarized) alacritty_theme="solarized_light";  tmux_flavor="solarized_light";   opencode_theme="system"; desc="Solarized Light" ;;
-        rosepine)  alacritty_theme="rose_pine_dawn";   tmux_flavor="rose_pine_dawn";    opencode_theme="system"; desc="Rose Pine Dawn (light)" ;;
-        gruvbox)   alacritty_theme="gruvbox_light";    tmux_flavor="gruvbox_light";     opencode_theme="system"; desc="Gruvbox Light" ;;
+        latte)     ghostty_theme="latte";           tmux_flavor="latte";     opencode_theme="system"; desc="Catppuccin Latte (light)" ;;
+        frappe)    ghostty_theme="frappe";           tmux_flavor="frappe";    opencode_theme="system"; desc="Catppuccin Frappe (medium dark)" ;;
+        macchiato) ghostty_theme="macchiato";        tmux_flavor="macchiato"; opencode_theme="system"; desc="Catppuccin Macchiato (dark)" ;;
+        mocha)     ghostty_theme="mocha";            tmux_flavor="mocha";     opencode_theme="system"; desc="Catppuccin Mocha (darkest)" ;;
+        solarized) ghostty_theme="solarized_light";  tmux_flavor="solarized_light";   opencode_theme="system"; desc="Solarized Light" ;;
+        rosepine)  ghostty_theme="rose_pine_dawn";   tmux_flavor="rose_pine_dawn";    opencode_theme="system"; desc="Rose Pine Dawn (light)" ;;
+        gruvbox)   ghostty_theme="gruvbox_light";    tmux_flavor="gruvbox_light";     opencode_theme="system"; desc="Gruvbox Light" ;;
         *)
             echo "Usage: changetheme <theme>"
             echo
@@ -71,8 +70,8 @@ changetheme() {
             ;;
     esac
 
-    if [[ ! -f "$alacritty_themes/$alacritty_theme.toml" ]]; then
-        echo "Error: theme file not found: $alacritty_themes/$alacritty_theme.toml"
+    if [[ ! -f "$ghostty_themes/$ghostty_theme" ]]; then
+        echo "Error: theme file not found: $ghostty_themes/$ghostty_theme"
         return 1
     fi
 
@@ -81,15 +80,10 @@ changetheme() {
     # persist tmux flavor (used by tmux on startup)
     echo "$tmux_flavor" > "$HOME/.local/state/tmux_flavor"
 
-    # update alacritty (live-reloads automatically)
-    # avoid sed -i which breaks symlinks and creates new inodes (defeats kqueue file watching)
+    # update ghostty (see .config/ghostty/themes).
+    # avoid sed -i which breaks symlinks. ghostty does not watch its config: SIGUSR2 makes it reload
     local new_config
-    new_config=$(sed 's|^import = .*|import = ["~/.config/alacritty/themes/'"$alacritty_theme"'.toml"]|' "$alacritty_config")
-    printf '%s\n' "$new_config" > "$alacritty_config"
-
-    # update ghostty (same theme names, see .config/ghostty/themes).
-    # ghostty does not watch its config: SIGUSR2 makes it reload
-    new_config=$(sed 's|^theme = .*|theme = '"$alacritty_theme"'|' "$ghostty_config")
+    new_config=$(sed 's|^theme = .*|theme = '"$ghostty_theme"'|' "$ghostty_config")
     printf '%s\n' "$new_config" > "$ghostty_config"
     pkill -USR2 -x ghostty 2>/dev/null
 
