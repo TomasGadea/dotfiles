@@ -47,6 +47,9 @@ sudo pmset -a displaysleep 0   # screen never sleeps
 defaults write com.apple.menuextra.clock ShowSeconds -bool true
 defaults -currentHost write com.apple.controlcenter BatteryShowPercentage -bool true
 defaults -currentHost write com.apple.controlcenter Bluetooth -int 18   # 18 = always show, 24 = hide
+# Hearing item, which holds Background Sounds
+defaults -currentHost write com.apple.controlcenter Hearing -int 18
+defaults write com.apple.controlcenter "NSStatusItem VisibleCC Hearing" -bool true
 
 # --- login items ---
 login_items=$(osascript -e 'tell application "System Events" to get the name of every login item')
