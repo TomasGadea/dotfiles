@@ -6,6 +6,7 @@ These steps need a login, a license, or a GUI permission.
 - [ ] **Logi Options+**: sign in. Restore the mouse settings from the cloud backup.
 - [ ] **Tailscale**: open the app and log in.
 - [ ] **Rectangle, AltTab, Alfred, Ghostty**: grant Accessibility permission (System Settings > Privacy & Security).
+- [ ] **AltTab**: grant Screen Recording permission, so that the thumbnails show the window content.
 - [ ] **Claude Code**: run `claude` and log in.
 - [ ] **gh**: run `gh auth login`.
 - [ ] **SSH keys**: copy them from the old Mac or create new keys.

@@ -53,7 +53,7 @@ defaults write com.apple.controlcenter "NSStatusItem VisibleCC Hearing" -bool tr
 
 # --- login items ---
 login_items=$(osascript -e 'tell application "System Events" to get the name of every login item')
-for app in Rectangle Syncthing; do
+for app in Rectangle Syncthing AltTab; do
     case "$login_items" in
         *"$app"*) ;;
         *) osascript -e "tell application \"System Events\" to make login item at end with properties {path:\"/Applications/$app.app\", hidden:false}" > /dev/null ;;
